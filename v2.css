@@ -1260,6 +1260,9 @@
   .icon-act .icon-act__icon { display: none; }
   .icon-act .icon-act__pill { position: static; opacity: 1; transform: none; }
   .icon-act.is-live { background: var(--live); border-color: var(--live); }
+  /* Remind me is the secondary action on phones: outlined, so Watch now leads */
+  .icon-act[data-remind], .icon-act[data-remind].is-on { background: transparent; border-color: #79748b; }
+  .icon-act[data-remind] .icon-act__pill { color: var(--text-1); }
 
   .schedule__inner { padding: 24px var(--gutter) 48px; }
   .schedule__head { margin-bottom: 20px; }
@@ -1284,7 +1287,8 @@
   .leaf__back { display: none; }
   .album__ribbons { --rw: 24px; gap: 6px; top: 8%; }
   .ribbon { height: 74px; font-size: 10px; }
-  .album__all { margin-left: 0; width: 100%; }
+  /* phones: the cover already says "Open the album" and photos open from the pages */
+  .album__all, .album__count.is-closed { display: none; }
   .album__controls { gap: 8px; }
   .viewer__fig { padding: 64px 12px 72px; }
   .viewer__fig img { max-height: calc(100dvh - 200px); }

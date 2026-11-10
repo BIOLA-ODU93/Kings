@@ -440,6 +440,7 @@ function setSpread(s, instant = false) {
     leaf.inert = mode === 'spread' ? !(i === s || i === s - 1) : i !== s;
   });
   $$('[data-album-step]').forEach((b) => { b.disabled = s === 0 || (b.dataset.albumStep === '-1' ? s <= 1 : s >= max); });
+  countEl.classList.toggle('is-closed', s === 0);
   countEl.textContent = s === 0 ? 'Open the album to begin' : mode === 'spread' ? `Spread ${s} of ${max}` : `Page ${s} of ${max}`;
   $$('[data-chapter]').forEach((r) => r.classList.toggle('is-here', s > 0 && spreadFor(r.dataset.chapter) <= s && (CHAPTERS[CHAPTERS.indexOf(r.dataset.chapter) + 1] === undefined || spreadFor(CHAPTERS[CHAPTERS.indexOf(r.dataset.chapter) + 1]) > s)));
 }
