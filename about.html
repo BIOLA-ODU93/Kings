@@ -59,54 +59,69 @@
   </div>
 
   <main id="top" class="aboutpage">
-    <!-- ================= Intro (Figma 1600:515) ================= -->
-    <section class="s2 s2--white about-intro" aria-labelledby="about-title">
-      <div class="about-intro__photos">
-        <img class="about-intro__main" src="assets/about/intro-main.jpg" alt="A singer leading worship at King’s Court" />
-        <img class="about-intro__small" src="assets/about/intro-small.jpg" alt="A guitarist playing during the service" />
+    <!-- ================= Who we stand for (Figma "About Us/ V1" 1284:1261), moved first, fades in word by word ================= -->
+    <section class="s2 s2--white av1-stand" aria-labelledby="stand-title">
+      <span class="tag2 av1-fade" style="--d: 0">Who we stand for</span>
+      <h1 class="av1-stand__text" id="stand-title" data-words>To make heaven. To take as many people with us as we can. To have a member of RCCG in every family of all nations.</h1>
+      <p class="av1-stand__note av1-fade" style="--d: 9">[Confirm the exact RCCG mission wording.]</p>
+    </section>
+
+    <!-- ================= About us (Figma 1:407): two framed photos + the story ================= -->
+    <section class="s2 s2--paper av1-intro" aria-labelledby="about-title">
+      <div class="av1-intro__photos" data-reveal>
+        <div class="av1-frame av1-frame--l"><img src="assets/about/intro-main.jpg" alt="A singer leading worship at King’s Court" /></div>
+        <div class="av1-frame av1-frame--s"><img src="assets/about/intro-small.jpg" alt="A guitarist playing during the service" /></div>
       </div>
-      <div class="about-intro__copy">
+      <div class="av1-intro__copy" data-reveal style="--d: 2">
         <span class="tag2">About us</span>
-        <h1 class="about__display" id="about-title">More than a church. A family.</h1>
-        <p class="about__body">For [two decades], God has used King’s Court to transform lives, strengthen faith and nurture lasting relationships rooted in love and purpose. Our story is one of people growing together, from children who found their calling in music and service to families who discovered community.</p>
+        <h2 class="av1-h" id="about-title">More than a church, a family.</h2>
+        <p>Welcome to King’s Court. At King’s Court, we are more than a church, we are a family. For [over two decades], God has been using this ministry to transform lives, strengthen faith and nurture lasting relationships rooted in love and purpose.</p>
+        <p>Our story is one of people growing together: from children who found their calling in music and service, to families who discovered community, to new members who found friendship and belonging. Each testimony reminds us that King’s Court is not just a place of worship, but a home where lives are built and destinies are shaped.</p>
+        <a class="btn2 btn2--m btn2--ink" href="#history">View more</a>
       </div>
     </section>
 
-    <!-- ================= Who we stand for (Figma 1600:525) ================= -->
-    <section class="s2 s2--white about-pad" aria-labelledby="stand-title">
-      <div class="stand">
-        <span class="tag2 tag2--dark">Who we stand for</span>
-        <h2 class="about__display stand__title" id="stand-title">To make heaven, and to take as many people with us as we can.</h2>
-        <ol class="stand__list">
-          <li><span class="stand__num">01</span><h3>Make heaven</h3><p>Holiness is our lifestyle, and grace is how we get there.</p></li>
-          <li><span class="stand__num">02</span><h3>Bring people with us</h3><p>Nobody walks in alone. Every visitor is welcomed like family.</p></li>
-          <li><span class="stand__num">03</span><h3>A member in every family</h3><p>Part of RCCG’s global mission to every family of all nations.</p></li>
-        </ol>
+    <!-- ================= History (Figma 1:434): a dark card, two columns of moments ================= -->
+    <section class="s2 s2--white av1-history" id="history" aria-labelledby="history-title">
+      <div class="av1-history__card">
+        <div class="av1-history__col">
+          <div class="av1-history__intro" data-reveal>
+            <span class="tag2 tag2--dark">History</span>
+            <h2 class="av1-h" id="history-title">Where it all began</h2>
+            <p>Our history is more than dates and events. It’s a testimony of God’s faithfulness and the dedication of those who built and nurtured this house of worship.</p>
+          </div>
+          <article class="av1-moment" data-reveal><div class="av1-moment__photo">[Photo from the church archive]</div><p class="av1-moment__head"><b>[2004]</b><b>A first prayer meeting</b></p><p>[Eight people in a living room in Dublin 15.]</p></article>
+          <article class="av1-moment" data-reveal><div class="av1-moment__photo">[Photo from the church archive]</div><p class="av1-moment__head"><b>[2006]</b><b>King’s Court is planted</b></p><p>[First Sunday service in a rented hall.]</p></article>
+        </div>
+        <div class="av1-history__col">
+          <article class="av1-moment" data-reveal><div class="av1-moment__photo">[Photo from the church archive]</div><p class="av1-moment__head"><b>[2014]</b><b>A home of our own</b></p><p>[Moved into our current building.]</p></article>
+          <article class="av1-moment" data-reveal><div class="av1-moment__photo">[Photo from the church archive]</div><p class="av1-moment__head"><b>[2026]</b><b>Still growing</b></p><p>[Four weekly gatherings and a family from 20+ nations.]</p></article>
+          <div class="av1-history__end" data-reveal>
+            <p>And the story is still being written. Come and be part of the next chapter.</p>
+            <a class="btn2 btn2--m btn2--white" href="./#faq">Plan your visit</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ================= History (Figma 1601:516) ================= -->
-    <section class="s2 s2--white about-pad" aria-labelledby="history-title">
-      <span class="tag2">Our history</span>
-      <h2 class="about__h1" id="history-title">Where it all began</h2>
-      <ol class="history">
-        <li><div class="history__photo">[Photo from the church archive]</div><p class="history__year">[2004]</p><h3>A first prayer meeting</h3><p>[Eight people in a living room in Dublin 15.]</p></li>
-        <li><div class="history__photo">[Photo from the church archive]</div><p class="history__year">[2006]</p><h3>King’s Court is planted</h3><p>[First Sunday service in a rented hall.]</p></li>
-        <li><div class="history__photo">[Photo from the church archive]</div><p class="history__year">[2014]</p><h3>A home of our own</h3><p>[Moved into our current building.]</p></li>
-        <li><div class="history__photo">[Photo from the church archive]</div><p class="history__year">[2026]</p><h3>Still growing</h3><p>[Four weekly gatherings and a family from 20+ nations.]</p></li>
-      </ol>
-    </section>
-
-    <!-- ================= Pastor (Figma 1601:554) ================= -->
-    <section class="s2 s2--white about-pad pastor" aria-labelledby="pastor-title">
-      <img class="pastor__photo" src="assets/about/pastor.jpg" alt="Pastor Segun Gbadebo" />
-      <div class="pastor__copy">
-        <span class="tag2">Our pastor</span>
-        <h2 class="about__h1" id="pastor-title">Pastor Segun Gbadebo</h2>
-        <p class="about__body about__body--ink">Pastor in charge of RCCG King’s Court Dublin and Provincial Pastor of RCCG Province 2, Ireland.</p>
-        <p class="about__text">[Two or three sentences in his own voice: how he came to faith, what he loves about Dublin, and what a first-time visitor should know about him. Plus his wife, if the church wants to present the pastorate as a couple.]</p>
-        <blockquote class="pastor__quote">“[A short welcome from the pastor, one line people remember.]”</blockquote>
-        <a class="btn2 btn2--m btn2--outline" href="#pastor-title">[Read his story]</a>
+    <!-- ================= The pastorate (Figma 1:498 + 105:199) ================= -->
+    <section class="s2 s2--paper av1-pastor" aria-labelledby="pastor-title">
+      <div class="av1-pastor__head" data-reveal>
+        <span class="tag2">The pastorate</span>
+        <h2 class="av1-h" id="pastor-title">Meet our pastor</h2>
+        <p>Our leaders are passionate about guiding, teaching and shepherding God’s people with love and wisdom.</p>
+      </div>
+      <div class="av1-pastor__row">
+        <div class="av1-pastor__main" data-reveal>
+          <img class="av1-pastor__big" src="assets/about/pastor.jpg" alt="Pastor Segun Gbadebo" />
+          <p class="av1-pastor__lede">Pastor Segun Gbadebo (PSG) is the Pastor in charge of RCCG King’s Court Dublin and the Provincial Pastor of RCCG Province 2, Ireland.</p>
+          <div class="av1-pastor__more" id="pastor-more" hidden>
+            <p>[Two or three sentences in his own voice: how he came to faith, what he loves about Dublin, and what a first-time visitor should know about him.]</p>
+            <blockquote>“[A short welcome from the pastor, one line people remember.]”</blockquote>
+          </div>
+          <button class="btn2 btn2--m btn2--ink" type="button" aria-expanded="false" aria-controls="pastor-more" data-pastor-more>Read more</button>
+        </div>
+        <div class="av1-pastor__side" data-reveal style="--d: 2"><img src="assets/about/pastor-2.jpg" alt="Pastor Segun Gbadebo standing" /></div>
       </div>
     </section>
 

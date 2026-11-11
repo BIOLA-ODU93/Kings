@@ -47,3 +47,32 @@ list?.addEventListener('click', (e) => {
     $('.faq__a', it).inert = !on;
   });
 });
+
+// ---------------------------------------------------------------- who we stand for: a soft fade, word by word, on arrival
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const stand = $('[data-words]');
+if (stand) {
+  const KEY = new Set(['heaven.', 'people', 'family', 'nations.']);
+  stand.innerHTML = stand.textContent.trim().split(/\s+/).map((w) => `<span class="w${KEY.has(w) ? ' is-key' : ''}">${w}</span>`).join(' ');
+  const words = $$('.w', stand);
+  if (reduce) words.forEach((w) => w.classList.add('is-on'));
+  else words.forEach((w, i) => setTimeout(() => w.classList.add('is-on'), 350 + i * 85));
+}
+
+// ---------------------------------------------------------------- the rest builds as you reach it
+const reveals = $$('[data-reveal]');
+if (reduce || !('IntersectionObserver' in window)) reveals.forEach((el) => el.classList.add('is-in'));
+else {
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px' });
+  reveals.forEach((el) => io.observe(el));
+}
+
+// ---------------------------------------------------------------- pastor: read more
+const moreBtn = $('[data-pastor-more]');
+moreBtn?.addEventListener('click', () => {
+  const panel = $('#pastor-more');
+  const open = panel.hidden;
+  panel.hidden = !open;
+  moreBtn.setAttribute('aria-expanded', String(open));
+  moreBtn.textContent = open ? 'Read less' : 'Read more';
+});
