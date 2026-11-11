@@ -3,477 +3,223 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>King's Court Dublin</title>
-  <meta name="description" content="There is a seat for you at King's Court Dublin. Sundays, 10am – 12:30pm." />
+  <title>A Sunday at King's Court</title>
+  <meta name="description" content="Spend a Sunday morning at RCCG King's Court Dublin: doors open at 9:40am, and there is a seat for you." />
+  <!-- Polymath via Adobe Fonts kit lxg6pfa (allowed on localhost and *.vercel.app) -->
+  <link rel="stylesheet" href="https://use.typekit.net/lxg6pfa.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Polymath (OH no Type Co.) via Adobe Fonts web project "King's Court Dublin website" (kit lxg6pfa).
-       Outfit/Inter stay as fallbacks; Caveat is the photo album's handwriting; Inter is the logo wordmark. -->
-  <link rel="stylesheet" href="https://use.typekit.net/lxg6pfa.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="v2.css" />
-  <script>document.documentElement.classList.add('js', 'v2');</script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/walkin/poster.jpg" />
+  <link rel="stylesheet" href="immersive.css" />
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <!-- ================= Nav (Figma 1584:404) ================= -->
-  <header class="nav nav--v2" aria-label="Site">
-    <div class="nav__pill">
-      <a class="brand" href="#top" aria-label="King's Court Dublin, home">
-        <span class="brand__mark"><img src="assets/logo-sprite.png" alt="" /></span>
-        <span class="brand__text">
-          <span class="brand__name">King’s Court</span>
-          <span class="brand__city">Dublin</span>
-        </span>
-      </a>
-      <nav class="nav__links" aria-label="Main">
-        <a href="#services">Services</a>
-        <a href="#sermons">Sermons</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#prayer">Prayer</a>
-        <a href="#give">Give</a>
-      </nav>
-      <div class="nav__actions">
-        <a class="nav__live" href="https://www.youtube.com/@kingscourtparish/live" data-watch-live target="_blank" rel="noopener"><span class="nav__dot" aria-hidden="true"></span>Watch live</a>
-        <a class="btn2 btn2--m btn2--white" href="#faq">Plan your visit</a>
-      </div>
-      <button class="nav__menu-text" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu" data-menu-open><span class="nav__menu-label">Menu</span><span class="nav__menu-icon" data-icon="list" data-size="20"></span></button>
-    </div>
+  <a class="skip" href="#doors">Skip to the start</a>
+
+  <!-- Fixed chrome: brand, the order of service (progress), watch live -->
+  <header class="bar">
+    <a class="brand" href="#doors" aria-label="King's Court Dublin, back to the start">
+      <span class="brand__mark"><img src="assets/logo-sprite.png" alt="" /></span>
+      <span><b>King’s Court</b><small>Dublin</small></span>
+    </a>
+    <p class="bar__now" aria-live="polite"><span data-now-label>Doors open</span></p>
+    <a class="bar__live" href="https://www.youtube.com/@kingscourtparish/live" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Watch live</a>
   </header>
 
-  <div class="menu" id="menu" hidden>
-    <button class="menu__close" type="button" aria-label="Close menu" data-menu-close>Close</button>
-    <nav aria-label="Main">
-      <ol class="menu__list">
-        <li><a href="#top">Home</a></li>
-        <li><a href="#services">Order of service</a></li>
-        <li><a href="#sermons">Sermons</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#prayer">Prayer request</a></li>
-        <li><a href="#give">Give</a></li>
-        <li><a href="#faq">Plan your visit</a></li>
-      </ol>
-    </nav>
-  </div>
+  <nav class="rail" aria-label="Order of service">
+    <ol>
+      <li><a href="#doors" data-rail="doors"><span class="rail__dot"></span><span class="rail__label">Doors open</span></a></li>
+      <li><a href="#praise" data-rail="praise"><span class="rail__dot"></span><span class="rail__label">Praise</span></a></li>
+      <li><a href="#word" data-rail="word"><span class="rail__dot"></span><span class="rail__label">The Word</span></a></li>
+      <li><a href="#prayer" data-rail="prayer"><span class="rail__dot"></span><span class="rail__label">Prayer</span></a></li>
+      <li><a href="#offering" data-rail="offering"><span class="rail__dot"></span><span class="rail__label">Offering</span></a></li>
+      <li><a href="#fellowship" data-rail="fellowship"><span class="rail__dot"></span><span class="rail__label">Fellowship</span></a></li>
+      <li><a href="#sent" data-rail="sent"><span class="rail__dot"></span><span class="rail__label">Until next Sunday</span></a></li>
+    </ol>
+  </nav>
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
 
-  <main id="top">
-    <!-- ================= Hero: the walk in (Figma 1584:406) ================= -->
-    <section class="walkin" id="walkin" aria-label="There is a seat for you">
-      <div class="walkin__stage">
-        <canvas id="scene" role="img" aria-label="Walking through the doors of King’s Court, up the aisle to an empty seat reserved for you"></canvas>
-        <div class="walkin__shade" aria-hidden="true"></div>
+  <main>
+    <!-- 1 · Doors open: the walk-in film scrubs with scroll -->
+    <section class="scene scene--doors" id="doors" data-scene="doors" data-label="Doors open" aria-label="Doors open">
+      <div class="stage">
+        <canvas class="film" data-film="in" aria-hidden="true"></canvas>
+        <img class="film__poster" src="assets/walkin/poster.jpg" alt="The foyer doors of King’s Court, opening onto the auditorium" />
+        <div class="doors__veil" aria-hidden="true"></div>
+        <div class="doors__copy doors__copy--start" data-fade="0 0.22">
+          <p class="kicker">Sunday · 9:40am</p>
+          <h1 class="display">The doors are open.</h1>
+          <p class="lede">Spend a Sunday morning with us. Scroll to step inside.</p>
+          <span class="cue" aria-hidden="true"><span></span></span>
+        </div>
+        <div class="doors__copy doors__copy--end" data-fade="0.78 1.01">
+          <p class="kicker">Sunday · 10:00am</p>
+          <h2 class="display">There is a seat for you.</h2>
+        </div>
+      </div>
+    </section>
 
-        <div class="clock" data-clock data-phase="morning" data-mode="live">
-          <button class="clock__pill" type="button" aria-expanded="false" aria-controls="clock-panel">
-            <span class="clock__icon" aria-hidden="true"></span>
-            <span><strong data-clock-phase>Morning</strong> in Dublin · <span data-clock-time>10:00</span></span>
-            <span class="clock__live-dot" aria-hidden="true"></span>
+    <!-- 2 · Praise: real worship photos rise out of the dark -->
+    <section class="scene scene--praise" id="praise" data-scene="praise" data-label="Praise" aria-labelledby="praise-title">
+      <div class="stage">
+        <div class="praise__field" data-praise aria-label="Photos from worship at King’s Court"></div>
+        <div class="praise__copy">
+          <p class="kicker">Praise and worship</p>
+          <h2 class="display" id="praise-title">Many nations.<br />One voice.</h2>
+          <p class="lede">The morning starts with song. Choir, congregation, children and visitors, all lifting the same name.</p>
+          <button class="btn btn--ghost" type="button" data-open-viewer="0">See the photos</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · The Word: the latest message fills the screen as the house lights go down -->
+    <section class="scene scene--word" id="word" data-scene="word" data-label="The Word" aria-labelledby="word-title">
+      <div class="stage-wrap">
+      <div class="stage">
+        <div class="word__copy" data-fade="-1 0.45">
+          <p class="kicker">The Word</p>
+          <h2 class="display" id="word-title">Take your seat.<br />The message begins.</h2>
+        </div>
+        <div class="screen" data-screen>
+          <button class="screen__media" type="button" data-play aria-label="Play the latest message on this page">
+            <img data-screen-img alt="" />
+            <span class="screen__play" aria-hidden="true" data-icon="play-fill" data-size="30"></span>
           </button>
-          <div class="clock__panel" id="clock-panel" hidden>
-            <p class="clock__label">The church follows Dublin’s real time. Slide to see it at another hour.</p>
-            <input type="range" min="0" max="23.75" step="0.25" data-clock-range aria-label="Time of day in Dublin" />
-            <div class="clock__scale" aria-hidden="true"><span>12am</span><span>6am</span><span>12pm</span><span>6pm</span><span>12am</span></div>
-            <button type="button" class="clock__live" data-clock-live hidden>Back to live time</button>
-          </div>
+          <div class="screen__meta"><p class="kicker" data-screen-date></p><h3 data-screen-title></h3></div>
         </div>
-
-        <div class="intro" data-layer="intro">
-          <span class="chip" data-greeting>Welcome home</span>
-          <h1 class="intro__title">The doors are open.</h1>
-          <p class="intro__sub">Step inside King’s Court. Something has been kept aside, just for you.</p>
-          <div class="actions">
-            <button class="btn btn--solid" type="button" data-walk>Step inside</button>
-            <a class="btn btn--ghost" href="https://www.youtube.com/@kingscourtparish/live" data-watch-live target="_blank" rel="noopener">Watch live</a>
-          </div>
-        </div>
-
-        <!-- Coming up: next service and events, one card that scrolls -->
-        <aside class="upnext upnext--hero" data-layer="event" aria-label="Coming up" data-upnext></aside>
-
-        <p class="scroll-cue" data-layer="cue" aria-hidden="true"><span></span>Scroll to walk in</p>
-
-        <div class="reveal">
-          <h2 class="reveal__line">
-            <span data-beat="0">There is</span>
-            <span data-beat="1">a seat</span>
-            <span data-beat="2">for you.</span>
-          </h2>
-          <div class="reveal__end" data-layer="end">
-            <p class="reveal__sub">Come as you are. Whatever you’re carrying, your place is ready.</p>
-            <div class="actions">
-              <a class="btn btn--solid" href="#visit" data-service-cta>Plan your visit</a>
-              <a class="btn btn--ghost" href="https://www.youtube.com/@kingscourtparish/live" data-watch-live target="_blank" rel="noopener">Watch live</a>
-            </div>
-            <span class="chip chip--quiet" data-service-status>Every Sunday · 10am – 12:30pm</span>
-          </div>
-        </div>
-
-        <div class="door-tag" aria-hidden="true">Step in</div>
-        <div class="progress" aria-hidden="true"><span></span></div>
+      </div>
+      </div>
+      <div class="word__more">
+        <h3 class="caps-label">Catch up on the last few Sundays</h3>
+        <ul class="strip" data-strip></ul>
+        <a class="link" href="https://www.youtube.com/@kingscourtparish/streams" target="_blank" rel="noopener">Every message on YouTube <span data-icon="arrow-right" data-size="16"></span></a>
       </div>
     </section>
 
-    <!-- phones: the same card sits under the hero (Figma 1581:412) -->
-    <div class="upnext-band">
-      <aside class="upnext" aria-label="Coming up" data-upnext></aside>
-    </div>
-
-    <!-- ================= Order of service (Figma 1584:408) ================= -->
-    <section class="s2 s2--white" id="services">
-      <div class="s2__head">
-        <div class="s2__intro">
-          <span class="tag2">This week at church</span>
-          <h2 class="h2-v2">Order of Service</h2>
-          <p class="s2__lede">One schedule, kept in one place. Each card shows when it next happens.</p>
+    <!-- 4 · Prayer: the screen goes quiet and light -->
+    <section class="scene scene--prayer" id="prayer" data-scene="prayer" data-label="Prayer" aria-labelledby="prayer-title">
+      <div class="calm">
+        <div class="calm__copy">
+          <p class="kicker">Prayer</p>
+          <h2 class="display" id="prayer-title">Your prayers matter here.</h2>
+          <p class="lede">Share what’s on your heart and let us stand with you in faith.</p>
+          <blockquote class="verse">“Cast all your anxiety on him because he cares for you.”<cite>1 Peter 5:7</cite></blockquote>
         </div>
-        <div class="s2__tools">
-          <span class="swipe-hint">Swipe to see the week</span>
-          <button class="btn2 btn2--m btn2--outline" type="button" data-schedule-open aria-haspopup="dialog">Full schedule</button>
-        </div>
-      </div>
-      <div class="services2" data-services></div>
-    </section>
-
-    <!-- ================= Sermons (Figma 1584:410) ================= -->
-    <section class="s2 s2--dark s2--indigo" id="sermons">
-      <!-- ambient light, taken from the featured sermon's own thumbnail -->
-      <div class="sermons__glow" aria-hidden="true"><img src="assets/v2/yt-PMCBURcHvSE.jpg" alt="" data-glow /></div>
-      <div class="s2__head">
-        <div class="s2__intro">
-          <span class="tag2 tag2--dark">Sermons</span>
-          <h2 class="h2-v2">Catch up on the Word</h2>
-          <p class="s2__lede">Every Sunday message, streamed live and kept here to watch again.</p>
-        </div>
-        <a class="btn2 btn2--m btn2--outline-light" href="https://www.youtube.com/@kingscourtparish/streams" target="_blank" rel="noopener">Browse the library</a>
-      </div>
-      <!-- filled from SERMONS in v2.js (latest messages from the KingsCourt Parish YouTube channel) -->
-      <div class="sermons" data-sermons></div>
-    </section>
-
-    <!-- ================= Gallery: the King's Court photo album ================= -->
-    <section class="s2 s2--paper album-sec" id="gallery">
-      <div class="s2__head">
-        <div class="s2__intro">
-          <span class="tag2">Gallery</span>
-          <h2 class="h2-v2">Life at King’s Court</h2>
-          <p class="s2__lede">A family from many nations. Open the album: moments from our Sundays, prayer meetings and fellowship.</p>
-        </div>
-      </div>
-      <div class="album" data-album>
-        <div class="album__tilt" data-album-tilt>
-          <div class="album__book" data-album-book aria-live="polite"></div>
-          <div class="album__ribbons" data-album-ribbons role="group" aria-label="Chapters"></div>
-        </div>
-      </div>
-      <div class="album__controls">
-        <button class="round2" type="button" aria-label="Previous page" data-album-step="-1"><span data-icon="caret-left" data-size="18"></span></button>
-        <p class="album__count" data-album-count>Closed</p>
-        <button class="round2" type="button" aria-label="Next page" data-album-step="1"><span data-icon="caret-right" data-size="18"></span></button>
-        <button class="btn2 btn2--m btn2--outline album__all" type="button" data-album-all>View all photos</button>
-      </div>
-    </section>
-
-    <!-- ================= Prayer request (Figma 1584:449) ================= -->
-    <section class="s2 s2--dawn prayer2" id="prayer">
-      <div class="dawn-light" aria-hidden="true"></div>
-      <div class="prayer2__copy">
-        <span class="tag2">Prayer request</span>
-        <h2 class="h1-v2">Your prayers matter here.</h2>
-        <p class="s2__lede s2__lede--l">Share what’s on your heart and let us stand with you in faith. Together, we believe in the power of prayer to bring comfort, hope and answers.</p>
-        <ul class="ticks">
-          <li>Read only by our prayer team</li>
-          <li>Name and contact are optional</li>
-          <li>You choose whether we follow up</li>
-          <li>Deleted after [90] days · <a href="#privacy">Privacy notice</a></li>
-        </ul>
-        <button class="btn2 btn2--l btn2--ink prayer2__open" type="button" data-prayer-open>Send a prayer request</button>
-      </div>
-      <div class="prayer2__slot" data-prayer-slot>
-        <div class="form-card" data-prayer-card>
-          <form class="form2 form2--light" data-prayer-form novalidate>
-            <div class="field">
-              <label for="pr-text">What would you like us to pray about?</label>
-              <textarea id="pr-text" name="request" rows="4" maxlength="500" required placeholder="Share as much or as little as you like…"></textarea>
-              <p class="field__hint"><span data-count>0</span> / 500 characters</p>
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="pr-name">Name</label>
-                <input id="pr-name" name="name" type="text" autocomplete="given-name" placeholder="Optional" />
-                <p class="field__hint">Leave blank to stay anonymous</p>
-              </div>
-              <div class="field">
-                <label for="pr-contact">Email or phone</label>
-                <input id="pr-contact" name="contact" type="text" autocomplete="email" placeholder="Optional" />
-                <p class="field__hint">Only if you’d like us to follow up</p>
-              </div>
-            </div>
-            <fieldset class="radios">
-              <legend>Who can see this?</legend>
-              <label><input type="radio" name="share" value="team" checked /> Our prayer team only</label>
-              <label><input type="radio" name="share" value="friday" /> Also pray for me at the Friday prayer meeting (first name only)</label>
-            </fieldset>
-            <label class="consent"><input id="pr-consent" type="checkbox" name="consent" required /> <span>I agree that King’s Court may store this request so our prayer team can pray for me. Read our <a href="#privacy">privacy notice</a>.</span></label>
-            <p class="form2__error" data-error hidden></p>
-            <button class="btn2 btn2--l btn2--ink btn2--block" type="submit">Send prayer request</button>
-          </form>
-          <div class="form2__done form2__done--light" data-prayer-done hidden tabindex="-1">
-            <span class="done-icon" data-icon="check"></span>
-            <h3>We’re praying with you.</h3>
-            <p>Your request has reached our prayer team. They also pray together at Faith Clinic every Friday at 6:30pm. If you left a way to reach you, someone will be in touch.</p>
-            <button class="btn2 btn2--m btn2--outline" type="button" data-prayer-again>Send another request</button>
+        <form class="card form" data-prayer-form novalidate>
+          <div class="field"><label for="pr-name">Your name</label><input id="pr-name" name="name" type="text" autocomplete="name" placeholder="Or leave blank to stay anonymous" /></div>
+          <div class="field">
+            <label for="pr-text">Your prayer request</label>
+            <textarea id="pr-text" name="request" rows="5" maxlength="1000" required placeholder="Tell us what you’d like us to pray about"></textarea>
+            <p class="field__error" hidden>Write your prayer request first.</p>
           </div>
+          <label class="check"><input type="checkbox" name="consent" required /><span>I’m happy for the prayer team to read this request.</span></label>
+          <p class="field__error" data-consent-error hidden>Tick the box so the prayer team can read your request.</p>
+          <button class="btn btn--ink" type="submit">Send prayer request</button>
+          <p class="form__note">[Preview only: requests aren’t sent anywhere yet.]</p>
+        </form>
+        <div class="card form__done" data-prayer-done hidden tabindex="-1">
+          <span data-icon="check" data-size="28"></span>
+          <h3>We’re praying with you.</h3>
+          <p>Thank you for trusting us with this.</p>
+          <button class="link" type="button" data-prayer-again>Send another request</button>
         </div>
       </div>
     </section>
 
-    <!-- ================= Give (Figma 1584:450) ================= -->
-    <!-- ================= Give (Figma "Give" 1858:2386) ================= -->
-    <section class="s2 give3" id="give">
-      <div class="give3__card">
-        <span class="give3__tag">Account details</span>
-        <h2 class="give3__title">Ways to Give</h2>
-        <p class="give3__lede">Generosity is our privilege because Jesus was generous towards us. Give by bank transfer, or in person at any service.</p>
-        <div class="bank">
-          <div class="bank__head">
-            <p class="bank__name" data-bank-title>[Bank name], Ireland</p>
-            <p class="bank__ref">Please reference: your name + “Tithe” or “Offering”</p>
-          </div>
-          <div class="bank__grid" data-bank></div>
+    <!-- 5 · Offering -->
+    <section class="scene scene--offering" id="offering" data-scene="offering" data-label="Offering" aria-labelledby="give-title">
+      <div class="calm">
+        <div class="calm__copy">
+          <p class="kicker">Offering</p>
+          <h2 class="display" id="give-title">Give with a glad heart.</h2>
+          <p class="lede">Your giving keeps the doors open every Sunday and supports the work of the church in Dublin.</p>
         </div>
-        <ul class="give3__more">
-          <li><b>In person</b> During any service · card reader and envelopes at the welcome desk</li>
-          <li><b>Online</b> Card, Apple Pay or Google Pay · [coming soon, to confirm]</li>
-        </ul>
-        <p class="give3__small">Registered charity CHY [00000] · RCCG King’s Court</p>
+        <div class="card bank" data-bank></div>
       </div>
     </section>
 
-    <!-- ================= Global family: photo rows (Figma 446:515) + First Timer form (732:360) ================= -->
-    <section class="s2 s2--paper family2" id="family">
-      <div class="team">
-        <div class="team__row team__row--top">
-          <div class="team__slides" data-team-row="0"></div>
-        </div>
-        <div class="team__row team__row--bottom">
-          <div class="team__slides" data-team-row="1"></div>
-          <div class="team__cell team__copy">
-            <p class="team__line">Behind every Sunday is a family that serves. Come and serve with us.</p>
-            <button class="team__join" type="button" data-join-open>Join us Now <span data-icon="arrow-up-right" data-size="20"></span></button>
-          </div>
-        </div>
+    <!-- 6 · Fellowship: the faces of the family drift past -->
+    <section class="scene scene--fellowship" id="fellowship" data-scene="fellowship" data-label="Fellowship" aria-labelledby="family-title">
+      <div class="faces" aria-hidden="true">
+        <div class="faces__row" data-faces="0"></div>
+        <div class="faces__row" data-faces="1"></div>
+      </div>
+      <div class="fellow">
+        <p class="kicker">Fellowship</p>
+        <h2 class="display" id="family-title">Stay a while.</h2>
+        <p class="lede">Behind every Sunday is a family that serves. Come and serve with us.</p>
+        <button class="btn btn--ink" type="button" data-join-open>Join us now</button>
       </div>
     </section>
 
-    <!-- ================= FAQ (Figma 1862:2465), replaces Plan your visit ================= -->
-    <section class="faq" id="faq">
-      <div class="faq__card">
-        <div class="faq__head">
-          <span class="tag2">FAQ</span>
-          <h2 class="faq__title">Everything you need to know</h2>
-        </div>
-        <div class="faq__list" data-faq>
-          <div class="faq__item">
-            <h3><button class="faq__q" type="button" id="faq-q1" aria-expanded="false" aria-controls="faq-a1"><span>What are your service times?</span><span class="faq__icon" data-icon="caret-circle-down"></span></button></h3>
-            <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1" inert><div class="faq__inner"><p>Our Sunday Family Service runs every Sunday, 10:00am – 12:30pm. Doors open at 9:40am.</p><p>Midweek, we meet on Zoom from 6:30 – 7:30pm: Digging Deep Bible study on Wednesdays, the Youth Service on Thursdays and Faith Clinic prayer on Fridays. Morning Glory is on the first Friday of every month, 5:30 – 6:30am.</p><button class="faq__link" type="button" data-schedule-open>See the full schedule <span data-icon="arrow-right"></span></button></div></div>
-          </div>
-          <div class="faq__item">
-            <h3><button class="faq__q" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><span>Where is the church located?</span><span class="faq__icon" data-icon="caret-circle-down"></span></button></h3>
-            <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2" inert><div class="faq__inner"><p>We meet at Unit 2, Damastown Way, Damastown Industrial Estate, Dublin 15 [Eircode].</p><a class="faq__link" href="#visit">See the map <span data-icon="arrow-right"></span></a></div></div>
-          </div>
-          <div class="faq__item">
-            <h3><button class="faq__q" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><span>Is there parking available?</span><span class="faq__icon" data-icon="caret-circle-down"></span></button></h3>
-            <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3" inert><div class="faq__inner"><p>[Free on-site parking at the church. Overflow parking on X Road.]</p></div></div>
-          </div>
-          <div class="faq__item">
-            <h3><button class="faq__q" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4"><span>Do you offer programs for children and youth?</span><span class="faq__icon" data-icon="caret-circle-down"></span></button></h3>
-            <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4" inert><div class="faq__inner"><p>Yes. Children’s church runs during the Sunday service for ages [3–12]. Young people have their own Youth Service every Thursday, 6:30 – 7:30pm.</p></div></div>
-          </div>
-          <div class="faq__item">
-            <h3><button class="faq__q" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5"><span>Are there volunteer opportunities?</span><span class="faq__icon" data-icon="caret-circle-down"></span></button></h3>
-            <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5" inert><div class="faq__inner"><p>Yes. Behind every Sunday is a family that serves. Fill in the First Timer form and we’ll help you find a team.</p><button class="faq__link" type="button" data-join-open>Join us now <span data-icon="arrow-right"></span></button></div></div>
-          </div>
-          <div class="faq__item">
-            <h3><button class="faq__q" type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6"><span>Do you offer counseling or prayer support?</span><span class="faq__icon" data-icon="caret-circle-down"></span></button></h3>
-            <div class="faq__a" id="faq-a6" role="region" aria-labelledby="faq-q6" inert><div class="faq__inner"><p>Yes. Send us a prayer request and we’ll stand with you in prayer. Counselling, including marriage counselling, is also available [how to book].</p><a class="faq__link" href="#prayer">Send a prayer request <span data-icon="arrow-right"></span></a></div></div>
-          </div>
+    <!-- 7 · Until next Sunday: the film runs back as you leave -->
+    <section class="scene scene--sent" id="sent" data-scene="sent" data-label="Until next Sunday" aria-labelledby="sent-title">
+      <div class="stage-wrap">
+      <div class="stage">
+        <canvas class="film" data-film="out" aria-hidden="true"></canvas>
+        <div class="sent__veil" aria-hidden="true"></div>
+        <div class="sent__copy" data-fade="0.35 1.01">
+          <p class="kicker">Sunday · 12:30pm</p>
+          <h2 class="display" id="sent-title">See you next Sunday.</h2>
         </div>
       </div>
-    </section>
-
-    <!-- ================= Map to King's Court, last section before the footer ================= -->
-    <section class="s2 s2--white findus" id="visit">
-      <div class="map2 map2--wide" role="img" aria-label="Map showing King’s Court Dublin in Damastown">
-        <div class="map2__streets" aria-hidden="true"></div>
-        <span class="map2__park" aria-hidden="true"></span>
-        <span class="map2__pin" aria-hidden="true"></span>
       </div>
-      <div class="findus__card">
-        <span class="tag2">Find us</span>
-        <b class="findus__name">RCCG King’s Court Dublin</b>
-        <p class="findus__addr"><span data-icon="map-pin"></span><span>Unit 2, Damastown Way, Damastown Industrial Estate, Dublin 15 [Eircode]</span></p>
-        <p class="findus__meta">Sundays at 10:00am · [Bus routes]</p>
-        <div class="findus__actions">
-          <a class="btn2 btn2--l btn2--ink" href="https://www.google.com/maps/search/?api=1&amp;query=RCCG+King%27s+Court+Dublin+Unit+2+Damastown+Way+Damastown+Industrial+Estate" target="_blank" rel="noopener">Get directions</a>
-          <button class="btn2 btn2--l btn2--outline" type="button" data-reserve-open>Reserve a seat</button>
+      <div class="visit">
+        <div class="visit__col">
+          <h3 class="caps-label">When we meet</h3>
+          <ul class="times" data-times></ul>
+        </div>
+        <div class="visit__col">
+          <h3 class="caps-label">Where</h3>
+          <p class="addr"><span data-icon="map-pin" data-size="20"></span><span>Unit 2, Damastown Way, Damastown Industrial Estate, Dublin 15 [Eircode]</span></p>
+          <a class="btn btn--light" href="https://www.google.com/maps/search/?api=1&amp;query=RCCG+King%27s+Court+Dublin+Unit+2+Damastown+Way+Damastown+Industrial+Estate" target="_blank" rel="noopener">Get directions</a>
+        </div>
+        <div class="visit__col visit__col--faq">
+          <h3 class="caps-label">Questions</h3>
+          <div class="faq" data-faq></div>
         </div>
       </div>
+      <footer class="foot">
+        <p>© 2026 RCCG King’s Court Dublin. Part of the Redeemed Christian Church of God. Registered charity CHY [00000].</p>
+        <p><a href="https://www.youtube.com/@kingscourtparish" target="_blank" rel="noopener">YouTube</a> · <span>[hello@kingscourtdublin.ie]</span></p>
+      </footer>
     </section>
   </main>
 
-  <!-- ================= Footer (Figma 1584:469) ================= -->
-  <footer class="footer2">
-    <div class="footer2__top">
-      <div class="footer2__brand">
-        <a class="brand" href="#top" aria-label="King's Court Dublin, home">
-          <span class="brand__mark"><img src="assets/logo-sprite.png" alt="" /></span>
-          <span class="brand__text">
-            <span class="brand__name">King’s Court</span>
-            <span class="brand__city">Dublin</span>
-          </span>
-        </a>
-        <p>A family of faith in Dublin, part of the Redeemed Christian Church of God.</p>
-      </div>
-      <div class="footer2__col"><h3>Visit</h3><span>[Street address]</span><span>[Area], Dublin [Eircode]</span><span>Sundays · 10:00am</span><a class="strong" href="https://www.google.com/maps/search/?api=1&amp;query=RCCG+King%27s+Court+Dublin+Unit+2+Damastown+Way+Damastown+Industrial+Estate" target="_blank" rel="noopener">Get directions <span data-icon="arrow-right"></span></a></div>
-      <div class="footer2__col"><h3>Connect</h3><a href="#faq">Plan your visit</a><a href="#prayer">Prayer request</a><a href="#visit">Become a member</a><a href="#visit">Contact us</a></div>
-      <div class="footer2__col"><h3>Resources</h3><a href="#visit">Membership classes</a><a href="#faq">Counselling</a><a href="#faq">Marriage counselling</a></div>
-      <div class="footer2__col"><h3>Media</h3><a href="#sermons">Sermons</a><a href="#top">Events</a><a href="#top">Announcements</a><a href="https://www.youtube.com/@kingscourtparish/live" data-watch-live target="_blank" rel="noopener">Watch live</a></div>
-      <div class="footer2__col"><h3>Contact</h3><span class="wrap">[hello@kingscourtdublin.ie]</span><span class="tabular">[+353 1 000 0000]</span></div>
-    </div>
-    <div class="footer2__bottom">
-      <div>
-        <p>© 2026 RCCG King’s Court Dublin. All rights reserved. Registered charity CHY [00000].</p>
-        <p class="footer2__legal"><a href="#privacy">Privacy notice</a> · <a href="#privacy">Cookie settings</a> · <a href="#privacy">Safeguarding</a> · <a href="#privacy">Accessibility</a></p>
-      </div>
-      <div class="footer2__social">
-        <a href="#top" aria-label="Instagram"><img src="assets/icon-instagram.svg" width="18" height="18" alt="" /></a>
-        <a href="#top" aria-label="Facebook"><img src="assets/icon-facebook.svg" width="17.3333" height="17.3333" alt="" /></a>
-        <a href="#top" aria-label="YouTube"><img src="assets/icon-youtube.svg" width="21.5002" height="18.5" alt="" /></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- phones: the two actions people come for, always in reach (Figma 1581:412) -->
-  <div class="dock" data-dock>
-    <button class="btn2 btn2--l btn2--white" type="button" data-reserve-open>Reserve a seat</button>
-    <a class="btn2 btn2--l btn2--outline-light" href="https://www.youtube.com/@kingscourtparish/live" data-watch-live target="_blank" rel="noopener">Watch live</a>
-  </div>
-
-  <!-- Full schedule (Figma "View All schedule" 281:2967): every gathering, soonest first -->
-  <dialog class="schedule" data-schedule aria-labelledby="schedule-title">
-    <div class="schedule__inner">
-      <header class="schedule__head">
-        <div class="s2__intro">
-          <span class="tag2 tag2--dark">Full schedule</span>
-          <h2 class="h2-v2" id="schedule-title">Every gathering at King’s Court</h2>
-          <p class="s2__lede">Dublin time · <span data-schedule-count></span>. Watch any of them live, or set a reminder.</p>
-        </div>
-        <button class="schedule__close" type="button" aria-label="Close full schedule" data-schedule-close><span data-icon="x" data-size="20"></span></button>
-      </header>
-      <div class="schedule__grid" data-schedule-grid></div>
-    </div>
+  <!-- Dialogs -->
+  <dialog class="viewer" data-viewer aria-label="Photos from King’s Court">
+    <button class="viewer__close" type="button" data-viewer-close aria-label="Close photos"><span data-icon="x" data-size="22"></span></button>
+    <figure><img data-viewer-img alt="" /><figcaption data-viewer-cap></figcaption></figure>
+    <button class="viewer__nav viewer__nav--prev" type="button" data-viewer-step="-1" aria-label="Previous photo"><span data-icon="caret-left" data-size="22"></span></button>
+    <button class="viewer__nav viewer__nav--next" type="button" data-viewer-step="1" aria-label="Next photo"><span data-icon="caret-right" data-size="22"></span></button>
   </dialog>
 
-  <!-- On-page video player: sermons and the Sunday live stream play here instead of leaving for YouTube -->
-  <dialog class="player" data-player aria-labelledby="player-title">
+  <dialog class="player" data-player aria-label="Message player">
+    <button class="viewer__close" type="button" data-player-close aria-label="Close player"><span data-icon="x" data-size="22"></span></button>
     <div class="player__frame" data-player-frame></div>
-    <div class="player__bar">
-      <div class="player__info">
-        <p class="caps caps--dark" data-player-when></p>
-        <h2 id="player-title" data-player-title></h2>
-      </div>
-      <div class="player__tools">
-        <a class="link2 link2--light" href="#" target="_blank" rel="noopener" data-player-out>Open on YouTube <span data-icon="arrow-right" data-size="16"></span></a>
-        <button class="player__close" type="button" aria-label="Close video" data-player-close><span data-icon="x" data-size="20"></span></button>
-      </div>
-    </div>
   </dialog>
 
-  <!-- Remind me: calendar reminders need no account and no backend -->
-  <div class="pop" data-remind-pop role="dialog" aria-modal="false" aria-labelledby="remind-title" hidden>
-    <p class="pop__title" id="remind-title">Remind me</p>
-    <p class="pop__text" data-remind-when></p>
-    <div class="pop__links" data-remind-links></div>
-    <button class="pop__close" type="button" aria-label="Close" data-remind-close><span data-icon="x"></span></button>
-  </div>
-
-  <!-- First Timer form (Figma 732:360) -->
-  <dialog class="ftimer" data-join aria-labelledby="join-title">
-    <div class="ftimer__top">
-      <h2 class="sr-only" id="join-title">First timer</h2>
-      <button class="ftimer__close" type="button" aria-label="Close form" data-join-close><span data-icon="x-circle" data-size="22"></span></button>
-    </div>
-    <form class="ftimer__form" data-join-form novalidate>
-      <div class="field"><label for="ft-name">Full Name</label><input id="ft-name" name="name" type="text" autocomplete="name" placeholder="Enter full name" required /></div>
-      <div class="field"><label for="ft-email">Email Address</label><input id="ft-email" name="email" type="email" autocomplete="email" placeholder="Enter your email address" required /></div>
-      <div class="field"><label for="ft-dob">Date of Birth <span class="opt">(optional)</span></label><span class="field__icon" data-icon="calendar-blank" data-size="20"></span><input id="ft-dob" name="dob" type="date" class="has-icon" autocomplete="bday" /></div>
-      <div class="field"><label for="ft-address">Address</label><input id="ft-address" name="address" type="text" autocomplete="street-address" placeholder="Enter your home address" /></div>
-      <div class="field"><label for="ft-phone">Phone Number</label><input id="ft-phone" name="phone" type="tel" autocomplete="tel" placeholder="Enter your phone number" /></div>
-      <div class="field"><label for="ft-job">Occupation <span class="opt">(optional)</span></label><input id="ft-job" name="occupation" type="text" autocomplete="organization-title" placeholder="Enter your occupation" /></div>
-      <label class="consent"><input id="ft-consent" type="checkbox" required /> <span>I agree that King’s Court may store these details to welcome me and keep in touch. Read our <a href="#privacy">privacy notice</a>.</span></label>
-      <p class="form2__error" data-error hidden></p>
-      <button class="ftimer__submit" type="submit">Submit Form</button>
+  <dialog class="sheet" data-join aria-labelledby="join-title">
+    <button class="viewer__close viewer__close--dark" type="button" data-join-close aria-label="Close"><span data-icon="x" data-size="22"></span></button>
+    <form class="form" data-join-form novalidate>
+      <h3 id="join-title">Join the family</h3>
+      <p class="sheet__lede">Tell us a little about you and we’ll be in touch.</p>
+      <div class="field"><label for="jn-name">Full name</label><input id="jn-name" name="name" type="text" autocomplete="name" required placeholder="Enter your full name" /><p class="field__error" hidden>Enter your name.</p></div>
+      <div class="field"><label for="jn-email">Email address</label><input id="jn-email" name="email" type="email" autocomplete="email" required placeholder="Enter your email address" /><p class="field__error" hidden>Enter a valid email address.</p></div>
+      <div class="field"><label for="jn-phone">Phone number</label><input id="jn-phone" name="phone" type="tel" autocomplete="tel" placeholder="Enter your phone number" /></div>
+      <label class="check"><input type="checkbox" name="consent" required /><span>King’s Court can contact me about joining and serving.</span></label>
+      <p class="field__error" data-consent-error hidden>Tick the box so we can get in touch.</p>
+      <button class="btn btn--ink" type="submit">Join us</button>
+      <p class="form__note">[Preview only: details aren’t sent anywhere yet.]</p>
     </form>
-    <div class="ftimer__done" data-join-done hidden tabindex="-1">
-      <span class="done-icon" data-icon="check"></span>
+    <div class="form__done" data-join-done hidden tabindex="-1">
+      <span data-icon="check" data-size="28"></span>
       <h3>Welcome to the family.</h3>
-      <p data-join-summary></p>
-      <a class="ftimer__submit" href="#visit" data-join-close>Plan your first Sunday</a>
+      <p>We’ll be in touch soon. See you on Sunday.</p>
     </div>
   </dialog>
 
-  <!-- Reserve a seat -->
-  <dialog class="sheet" data-reserve aria-labelledby="reserve-title">
-    <button class="sheet__close" type="button" aria-label="Close" data-reserve-close><span data-icon="x"></span></button>
-    <form class="form2 form2--light" data-reserve-form novalidate>
-      <span class="tag2">Plan your visit</span>
-      <h2 class="h2-v2" id="reserve-title">Reserve a seat</h2>
-      <p class="s2__lede">Tell us you’re coming and we’ll keep a seat for you.</p>
-      <div class="field">
-        <label for="rs-day">Which Sunday?</label>
-        <select id="rs-day" name="day" data-sundays></select>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label for="rs-name">First name</label>
-          <input id="rs-name" name="name" type="text" autocomplete="given-name" required />
-        </div>
-        <div class="field">
-          <label for="rs-seats">Seats</label>
-          <select id="rs-seats" name="seats"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
-        </div>
-      </div>
-      <div class="field">
-        <label for="rs-contact">Email or phone</label>
-        <input id="rs-contact" name="contact" type="text" autocomplete="email" required />
-        <p class="field__hint">So we can confirm your seat. We won’t add you to any mailing list.</p>
-      </div>
-      <label class="consent"><input id="rs-meet" type="checkbox" name="meet" /> <span>Meet me at the door</span></label>
-      <label class="consent"><input id="rs-consent" type="checkbox" name="consent" required /> <span>I agree that King’s Court may use these details to arrange my visit. Read our <a href="#privacy">privacy notice</a>.</span></label>
-      <p class="form2__error" data-error hidden></p>
-      <button class="btn2 btn2--l btn2--ink btn2--block" type="submit">Reserve my seat</button>
-    </form>
-    <div class="form2__done form2__done--light" data-reserve-done hidden tabindex="-1">
-      <span class="done-icon" data-icon="check"></span>
-      <h3>Your seat is reserved.</h3>
-      <p data-reserve-summary></p>
-      <div class="pop__links" data-reserve-links></div>
-    </div>
-  </dialog>
-
-  <!-- Photo viewer -->
-  <dialog class="viewer" data-viewer aria-label="Photo viewer">
-    <figure class="viewer__fig">
-      <img alt="" data-viewer-img />
-      <figcaption><b data-viewer-title></b><span data-viewer-meta></span></figcaption>
-    </figure>
-    <button class="viewer__btn viewer__btn--prev" type="button" aria-label="Previous photo" data-viewer-step="-1"><span data-icon="caret-left" data-size="22"></span></button>
-    <button class="viewer__btn viewer__btn--next" type="button" aria-label="Next photo" data-viewer-step="1"><span data-icon="caret-right" data-size="22"></span></button>
-    <button class="viewer__close" type="button" aria-label="Close photo" data-viewer-close><span data-icon="x" data-size="20"></span></button>
-    <p class="viewer__count" data-viewer-count></p>
-  </dialog>
-
-  <script type="module" src="walkin.js"></script>
-  <script type="module" src="v2.js"></script>
+  <script type="module" src="immersive.js"></script>
 </body>
 </html>
