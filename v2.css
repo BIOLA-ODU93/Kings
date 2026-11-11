@@ -1370,3 +1370,67 @@
   .nav--v2 .nav__pill { transition: none; }
   .dock, .icon-act, .icon-act::after { transition: none; }
 }
+
+/* ---------- About page (Figma "08 · About v2 — fixes" 1581:417) ---------- */
+.aboutpage .s2 { padding-block: 0; }
+.about-intro { display: flex; gap: 60px; align-items: center; padding-top: 148px !important; padding-bottom: 72px !important; }
+.about-pad { padding-bottom: 72px !important; }
+.about-pad:last-of-type { padding-bottom: 96px !important; }
+.about-intro__photos { position: relative; flex: 0 0 620px; height: 480px; }
+.about-intro__main { position: absolute; left: 0; top: 0; width: 500px; height: 440px; object-fit: cover; border-radius: 20px; }
+.about-intro__small { position: absolute; left: 370px; top: 260px; width: 250px; height: 220px; object-fit: cover; border: 10px solid var(--white); border-radius: 20px; box-sizing: border-box; }
+.about-intro__copy { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.v2 .about__display { margin: 0; font-weight: 700; font-size: 56px; line-height: 58px; letter-spacing: -0.02em; text-wrap: balance; }
+.v2 .about__h1 { margin: 0; font-weight: 700; font-size: 40px; line-height: 44px; letter-spacing: -0.015em; }
+.about__body { margin: 0; max-width: 62ch; color: var(--text-sec); font-size: 18px; line-height: 28px; }
+.about__body--ink { color: var(--text-1); }
+.about__text { margin: 0; max-width: 62ch; color: var(--text-sec); font-size: 16px; line-height: 24px; }
+.stand { display: flex; flex-direction: column; align-items: flex-start; gap: 32px; padding: 64px; border-radius: 30px; background: var(--surface-dark); color: var(--white); }
+.v2 .stand__title { max-width: 1000px; color: var(--white); }
+.stand__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; width: 100%; margin: 0; padding: 0; list-style: none; }
+.stand__list li { display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 1px solid var(--white); }
+.stand__num { font-family: var(--font-display); font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: 0.06em; color: #c7973f; }
+.v2 .stand__list h3 { margin: 0; font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.01em; }
+.stand__list p { margin: 0; color: var(--on-dark-mut); font-size: 16px; line-height: 24px; }
+.about-pad > .tag2 + .about__h1 { margin: 16px 0 32px; }
+.history { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
+.history li { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.history__photo { display: grid; place-items: center; height: 200px; padding: 16px; border: 1px dashed var(--border-strong); border-radius: 16px; background: var(--paper); color: var(--text-mut); font-size: 14px; text-align: center; }
+.history__year { display: flex; align-items: center; gap: 10px; margin: 0; color: var(--accent); font-family: var(--font-head); font-weight: 600; font-size: 24px; line-height: 30px; }
+.history__year::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+.v2 .history h3 { margin: 0; font-weight: 600; font-size: 16px; line-height: 20px; }
+.history li > p:last-child { margin: 0; color: var(--text-sec); font-size: 14px; line-height: 20px; }
+.pastor { display: flex; gap: 60px; align-items: center; }
+.pastor__photo { flex: 0 0 560px; height: 620px; object-fit: cover; border-radius: 24px; }
+.pastor__copy { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.pastor__quote { margin: 0; padding-left: 20px; border-left: 3px solid #c7973f; font-family: var(--font-head); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.01em; }
+.aboutpage .faq { padding: 0 var(--gutter) 96px; background: var(--white); }
+.aboutpage .faq__card { max-width: none; background: var(--paper); }
+.aboutpage .faq__item { background: var(--white); }
+@media (max-width: 1240px) {
+  .about-intro__photos { flex-basis: 48%; height: auto; aspect-ratio: 620 / 480; }
+  .about-intro__main { width: 80.6%; height: 91.7%; }
+  .about-intro__small { left: 59.7%; top: 54.2%; width: 40.3%; height: 45.8%; }
+  .pastor__photo { flex-basis: 44%; height: auto; aspect-ratio: 560 / 620; }
+}
+@media (max-width: 1023px) {
+  .about-intro, .pastor { flex-direction: column; align-items: stretch; gap: 32px; }
+  .about-intro__photos { flex-basis: auto; width: 100%; max-width: 620px; }
+  .pastor__photo { flex-basis: auto; width: 100%; max-width: 560px; }
+  .history { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stand__list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 720px) {
+  .about-intro { padding-top: 104px !important; padding-bottom: 48px !important; }
+  .about-pad { padding-bottom: 48px !important; }
+  .v2 .about__display { font-size: 36px; line-height: 40px; }
+  .v2 .about__h1 { font-size: 30px; line-height: 34px; }
+  .about__body { font-size: 16px; line-height: 25px; }
+  .stand { padding: 32px 20px; border-radius: 24px; gap: 24px; }
+  .v2 .stand__list h3 { font-size: 20px; line-height: 26px; }
+  .history { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .history__photo { height: 160px; }
+  .pastor__photo { aspect-ratio: 4 / 5; }
+  .pastor__quote { font-size: 20px; line-height: 27px; }
+  .aboutpage .faq { padding: 0 var(--gutter) 64px; }
+}
