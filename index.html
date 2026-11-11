@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://use.typekit.net/lxg6pfa.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="assets/walkin/poster.jpg" />
   <link rel="stylesheet" href="immersive.css" />
   <script>document.documentElement.classList.add('js');</script>
@@ -17,19 +17,46 @@
 <body>
   <a class="skip" href="#doors">Skip to the start</a>
 
-  <!-- Fixed chrome: brand, the order of service (progress), watch live -->
-  <header class="bar">
-    <a class="brand" href="#doors" aria-label="King's Court Dublin, back to the start">
-      <span class="brand__mark"><img src="assets/logo-sprite.png" alt="" /></span>
-      <span><b>King’s Court</b><small>Dublin</small></span>
-    </a>
-    <p class="bar__now" aria-live="polite"><span data-now-label>Doors open</span></p>
-    <a class="bar__live" href="https://www.youtube.com/@kingscourtparish/live" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Watch live</a>
+  <!-- V2 nav (Figma 1584:404): full bar at the top, the floating pill once you scroll (1858:2170) -->
+  <header class="nav" aria-label="Site">
+    <div class="nav__pill">
+      <a class="brand" href="./" aria-label="King's Court Dublin, home">
+        <span class="brand__mark"><img src="assets/logo-sprite.png" alt="" /></span>
+        <span class="brand__text"><span class="brand__name">King’s Court</span><span class="brand__city">Dublin</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="about.html">About</a>
+        <a href="./#order">Services</a>
+        <a href="./#times">Events</a>
+        <a href="./#word">Sermons</a>
+        <a href="./#offering">Give</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="nav__live" href="https://www.youtube.com/@kingscourtparish/live" target="_blank" rel="noopener"><span class="nav__dot" aria-hidden="true"></span>Watch live</a>
+        <a class="pillbtn" href="./#visit">Plan your visit</a>
+      </div>
+      <button class="nav__menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu" data-menu-open><span class="nav__menu-label">Menu</span><span class="nav__menu-icon" data-icon="list" data-size="20"></span></button>
+    </div>
   </header>
+  <div class="menu" id="menu" hidden>
+    <button class="menu__close" type="button" aria-label="Close menu" data-menu-close>Close</button>
+    <nav aria-label="Main">
+      <ol class="menu__list">
+        <li><a href="./#doors">Home</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="./#order">Order of service</a></li>
+        <li><a href="./#word">Sermons</a></li>
+        <li><a href="./#prayer">Prayer request</a></li>
+        <li><a href="./#offering">Give</a></li>
+        <li><a href="./#visit">Plan your visit</a></li>
+      </ol>
+    </nav>
+  </div>
 
-  <nav class="rail" aria-label="Order of service">
+  <nav class="rail" aria-label="Order of service" data-tone="dark">
     <ol>
       <li><a href="#doors" data-rail="doors"><span class="rail__dot"></span><span class="rail__label">Doors open</span></a></li>
+      <li><a href="#order" data-rail="order"><span class="rail__dot"></span><span class="rail__label">Order of service</span></a></li>
       <li><a href="#praise" data-rail="praise"><span class="rail__dot"></span><span class="rail__label">Praise</span></a></li>
       <li><a href="#word" data-rail="word"><span class="rail__dot"></span><span class="rail__label">The Word</span></a></li>
       <li><a href="#prayer" data-rail="prayer"><span class="rail__dot"></span><span class="rail__label">Prayer</span></a></li>
@@ -42,7 +69,7 @@
 
   <main>
     <!-- 1 · Doors open: the walk-in film scrubs with scroll -->
-    <section class="scene scene--doors" id="doors" data-scene="doors" data-label="Doors open" aria-label="Doors open">
+    <section class="scene scene--doors" id="doors" data-scene="doors" data-tone="dark" aria-label="Doors open">
       <div class="stage">
         <canvas class="film" data-film="in" aria-hidden="true"></canvas>
         <img class="film__poster" src="assets/walkin/poster.jpg" alt="The foyer doors of King’s Court, opening onto the auditorium" />
@@ -60,8 +87,47 @@
       </div>
     </section>
 
-    <!-- 2 · Praise: real worship photos rise out of the dark -->
-    <section class="scene scene--praise" id="praise" data-scene="praise" data-label="Praise" aria-labelledby="praise-title">
+    <!-- 2 · Order of service: an usher hands you the printed programme, and it opens -->
+    <section class="scene scene--order" id="order" data-scene="order" data-tone="dark" aria-labelledby="order-title">
+      <div class="stage">
+        <div class="order__copy" data-fade="-1 0.3">
+          <p class="kicker">At the door</p>
+          <h2 class="display display--m">Here’s your order of service.</h2>
+        </div>
+        <div class="programme" data-programme>
+          <div class="programme__leaf">
+            <div class="programme__cover" aria-hidden="true">
+              <span class="programme__crest"><img src="assets/logo-sprite.png" alt="" /></span>
+              <p class="programme__eyebrow">RCCG King’s Court Dublin</p>
+              <p class="programme__title">Order of service</p>
+              <p class="programme__sub">Welcome home. There is a seat for you.</p>
+            </div>
+            <div class="programme__back">
+              <p class="programme__eyebrow">Sunday Family Service · 10:00am</p>
+              <p class="programme__welcome">Welcome. You’re in the right place.</p>
+              <ol class="programme__order">
+                <li>Praise and worship</li>
+                <li>The Word</li>
+                <li>Prayer</li>
+                <li>Offering</li>
+                <li>Fellowship</li>
+              </ol>
+              <p class="programme__small">Children’s church runs during the service for ages [3–12]. Ask a greeter if you need anything.</p>
+            </div>
+          </div>
+          <div class="programme__inside">
+            <div class="programme__head">
+              <h2 id="order-title">This week at King’s Court</h2>
+              <p>Join us in the hall on Sunday, or online through the week.</p>
+            </div>
+            <ul class="services" data-services></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Praise: real worship photos rise out of the dark -->
+    <section class="scene scene--praise" id="praise" data-scene="praise" data-tone="dark" aria-labelledby="praise-title">
       <div class="stage">
         <div class="praise__field" data-praise aria-label="Photos from worship at King’s Court"></div>
         <div class="praise__copy">
@@ -73,22 +139,22 @@
       </div>
     </section>
 
-    <!-- 3 · The Word: the latest message fills the screen as the house lights go down -->
-    <section class="scene scene--word" id="word" data-scene="word" data-label="The Word" aria-labelledby="word-title">
+    <!-- 4 · The Word: the latest message fills the screen as the house lights go down -->
+    <section class="scene scene--word" id="word" data-scene="word" data-tone="dark" aria-labelledby="word-title">
       <div class="stage-wrap">
-      <div class="stage">
-        <div class="word__copy" data-fade="-1 0.45">
-          <p class="kicker">The Word</p>
-          <h2 class="display" id="word-title">Take your seat.<br />The message begins.</h2>
+        <div class="stage">
+          <div class="word__copy" data-fade="-1 0.45">
+            <p class="kicker">The Word</p>
+            <h2 class="display" id="word-title">Take your seat.<br />The message begins.</h2>
+          </div>
+          <div class="screen" data-screen>
+            <button class="screen__media" type="button" data-play aria-label="Play the latest message on this page">
+              <img data-screen-img alt="" />
+              <span class="screen__play" aria-hidden="true" data-icon="play-fill" data-size="30"></span>
+            </button>
+            <div class="screen__meta"><p class="kicker" data-screen-date></p><h3 data-screen-title></h3></div>
+          </div>
         </div>
-        <div class="screen" data-screen>
-          <button class="screen__media" type="button" data-play aria-label="Play the latest message on this page">
-            <img data-screen-img alt="" />
-            <span class="screen__play" aria-hidden="true" data-icon="play-fill" data-size="30"></span>
-          </button>
-          <div class="screen__meta"><p class="kicker" data-screen-date></p><h3 data-screen-title></h3></div>
-        </div>
-      </div>
       </div>
       <div class="word__more">
         <h3 class="caps-label">Catch up on the last few Sundays</h3>
@@ -97,76 +163,87 @@
       </div>
     </section>
 
-    <!-- 4 · Prayer: the screen goes quiet and light -->
-    <section class="scene scene--prayer" id="prayer" data-scene="prayer" data-label="Prayer" aria-labelledby="prayer-title">
-      <div class="calm">
-        <div class="calm__copy">
-          <p class="kicker">Prayer</p>
-          <h2 class="display" id="prayer-title">Your prayers matter here.</h2>
-          <p class="lede">Share what’s on your heart and let us stand with you in faith.</p>
-          <blockquote class="verse">“Cast all your anxiety on him because he cares for you.”<cite>1 Peter 5:7</cite></blockquote>
-        </div>
-        <form class="card form" data-prayer-form novalidate>
-          <div class="field"><label for="pr-name">Your name</label><input id="pr-name" name="name" type="text" autocomplete="name" placeholder="Or leave blank to stay anonymous" /></div>
-          <div class="field">
-            <label for="pr-text">Your prayer request</label>
-            <textarea id="pr-text" name="request" rows="5" maxlength="1000" required placeholder="Tell us what you’d like us to pray about"></textarea>
-            <p class="field__error" hidden>Write your prayer request first.</p>
+    <!-- 5 · Prayer: the room goes quiet, one warm light, and the request rises -->
+    <section class="scene scene--prayer" id="prayer" data-scene="prayer" aria-labelledby="prayer-title">
+      <div class="stage-wrap" data-tone="dark">
+        <div class="stage">
+          <img class="prayer__photo" src="assets/web/about-worship.jpg" alt="Hands lifted in prayer at King’s Court" data-prayer-photo />
+          <div class="prayer__light" aria-hidden="true" data-prayer-light></div>
+          <div class="prayer__words">
+            <p class="kicker">Prayer</p>
+            <p class="prayer__line" data-words>Whatever you’re carrying this morning, you don’t have to carry it alone.</p>
           </div>
-          <label class="check"><input type="checkbox" name="consent" required /><span>I’m happy for the prayer team to read this request.</span></label>
-          <p class="field__error" data-consent-error hidden>Tick the box so the prayer team can read your request.</p>
-          <button class="btn btn--ink" type="submit">Send prayer request</button>
-          <p class="form__note">[Preview only: requests aren’t sent anywhere yet.]</p>
-        </form>
-        <div class="card form__done" data-prayer-done hidden tabindex="-1">
-          <span data-icon="check" data-size="28"></span>
-          <h3>We’re praying with you.</h3>
-          <p>Thank you for trusting us with this.</p>
-          <button class="link" type="button" data-prayer-again>Send another request</button>
+        </div>
+      </div>
+      <div class="prayer__send" data-tone="light">
+        <div class="calm">
+          <div class="calm__copy">
+            <h2 class="display display--m" id="prayer-title">Your prayers matter here.</h2>
+            <p class="lede">Share what’s on your heart and let us stand with you in faith.</p>
+            <p class="note">We pray for every request at Faith Clinic, Fridays 6:30pm on Zoom. [Church to confirm]</p>
+          </div>
+          <div class="send" data-send>
+            <form class="card form" data-prayer-form novalidate>
+              <div class="field"><label for="pr-name">Your name</label><input id="pr-name" name="name" type="text" autocomplete="name" placeholder="Or leave blank to stay anonymous" /></div>
+              <div class="field">
+                <label for="pr-text">Your prayer request</label>
+                <textarea id="pr-text" name="request" rows="5" maxlength="1000" required placeholder="Tell us what you’d like us to pray about"></textarea>
+                <p class="field__error" hidden>Write your prayer request first.</p>
+              </div>
+              <label class="check"><input type="checkbox" name="consent" required /><span>I’m happy for the prayer team to read this request.</span></label>
+              <p class="field__error" data-consent-error hidden>Tick the box so the prayer team can read your request.</p>
+              <button class="btn btn--ink" type="submit">Send prayer request</button>
+              <p class="form__note">[Preview only: requests aren’t sent anywhere yet.]</p>
+            </form>
+            <div class="card form__done" data-prayer-done hidden tabindex="-1">
+              <span data-icon="check" data-size="28"></span>
+              <h3>Your request has gone up.</h3>
+              <p>We’re praying with you. Thank you for trusting us with this.</p>
+              <button class="link" type="button" data-prayer-again>Send another request</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 5 · Offering -->
-    <section class="scene scene--offering" id="offering" data-scene="offering" data-label="Offering" aria-labelledby="give-title">
-      <div class="calm">
-        <div class="calm__copy">
-          <p class="kicker">Offering</p>
-          <h2 class="display" id="give-title">Give with a glad heart.</h2>
-          <p class="lede">Your giving keeps the doors open every Sunday and supports the work of the church in Dublin.</p>
-        </div>
-        <div class="card bank" data-bank></div>
-      </div>
-    </section>
-
-    <!-- 6 · Fellowship: the faces of the family drift past -->
-    <section class="scene scene--fellowship" id="fellowship" data-scene="fellowship" data-label="Fellowship" aria-labelledby="family-title">
-      <div class="faces" aria-hidden="true">
-        <div class="faces__row" data-faces="0"></div>
-        <div class="faces__row" data-faces="1"></div>
-      </div>
-      <div class="fellow">
-        <p class="kicker">Fellowship</p>
-        <h2 class="display" id="family-title">Stay a while.</h2>
-        <p class="lede">Behind every Sunday is a family that serves. Come and serve with us.</p>
-        <button class="btn btn--ink" type="button" data-join-open>Join us now</button>
-      </div>
-    </section>
-
-    <!-- 7 · Until next Sunday: the film runs back as you leave -->
-    <section class="scene scene--sent" id="sent" data-scene="sent" data-label="Until next Sunday" aria-labelledby="sent-title">
-      <div class="stage-wrap">
+    <!-- 6 · Offering: the church's gatherings light up one by one, then the bank card -->
+    <section class="scene scene--offering" id="offering" data-scene="offering" data-tone="light" aria-labelledby="give-title">
       <div class="stage">
-        <canvas class="film" data-film="out" aria-hidden="true"></canvas>
-        <div class="sent__veil" aria-hidden="true"></div>
-        <div class="sent__copy" data-fade="0.35 1.01">
-          <p class="kicker">Sunday · 12:30pm</p>
-          <h2 class="display" id="sent-title">See you next Sunday.</h2>
+        <div class="offering__copy">
+          <p class="kicker">Offering</p>
+          <h2 class="display display--m" id="give-title">Your giving keeps every one of these going.</h2>
+        </div>
+        <div class="windows" data-windows></div>
+      </div>
+    </section>
+
+    <!-- 7 · Fellowship: scattered faces gather into one family -->
+    <section class="scene scene--fellowship" id="fellowship" data-scene="fellowship" data-tone="light" aria-labelledby="family-title">
+      <div class="stage">
+        <div class="mosaic" data-mosaic aria-hidden="true"></div>
+        <div class="fellow" data-fellow>
+          <p class="kicker">Fellowship</p>
+          <h2 class="display display--m" id="family-title">Stay a while.</h2>
+          <p class="lede">Behind every Sunday is a family that serves. Come and serve with us.</p>
+          <button class="btn btn--ink" type="button" data-join-open>Join us now</button>
         </div>
       </div>
+    </section>
+
+    <!-- 8 · Until next Sunday: the film runs back as you leave -->
+    <section class="scene scene--sent" id="sent" data-scene="sent" data-tone="dark" aria-labelledby="sent-title">
+      <div class="stage-wrap">
+        <div class="stage">
+          <canvas class="film" data-film="out" aria-hidden="true"></canvas>
+          <div class="sent__veil" aria-hidden="true"></div>
+          <div class="sent__copy" data-fade="0.35 1.01">
+            <p class="kicker">Sunday · 12:30pm</p>
+            <h2 class="display" id="sent-title">See you next Sunday.</h2>
+          </div>
+        </div>
       </div>
-      <div class="visit">
-        <div class="visit__col">
+      <div class="visit" id="visit">
+        <div class="visit__col" id="times">
           <h3 class="caps-label">When we meet</h3>
           <ul class="times" data-times></ul>
         </div>
@@ -182,12 +259,19 @@
       </div>
       <footer class="foot">
         <p>© 2026 RCCG King’s Court Dublin. Part of the Redeemed Christian Church of God. Registered charity CHY [00000].</p>
-        <p><a href="https://www.youtube.com/@kingscourtparish" target="_blank" rel="noopener">YouTube</a> · <span>[hello@kingscourtdublin.ie]</span></p>
+        <p><a href="about.html">About us</a> · <a href="https://www.youtube.com/@kingscourtparish" target="_blank" rel="noopener">YouTube</a> · <span>[hello@kingscourtdublin.ie]</span></p>
       </footer>
     </section>
   </main>
 
-  <!-- Dialogs -->
+  <!-- Remind me: calendar links, no account needed -->
+  <div class="pop" data-remind-pop role="dialog" aria-labelledby="remind-title" hidden>
+    <p class="pop__title" id="remind-title">Remind me</p>
+    <p class="pop__when" data-remind-when></p>
+    <div class="pop__links" data-remind-links></div>
+    <button class="pop__close" type="button" data-remind-close aria-label="Close"><span data-icon="x" data-size="18"></span></button>
+  </div>
+
   <dialog class="viewer" data-viewer aria-label="Photos from King’s Court">
     <button class="viewer__close" type="button" data-viewer-close aria-label="Close photos"><span data-icon="x" data-size="22"></span></button>
     <figure><img data-viewer-img alt="" /><figcaption data-viewer-cap></figcaption></figure>

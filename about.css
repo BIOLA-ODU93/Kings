@@ -1,0 +1,89 @@
+/* About King's Court (immersive): Figma "08 · About v2 — fixes" 1581:417, told as scroll scenes. */
+.ab { position: relative; }
+.moving .ab--intro { height: 240vh; }
+.moving .ab--stand { height: 320vh; }
+.moving .ab--history { height: 300vh; }
+.moving .ab--pastor { height: 200vh; }
+.moving .ab > .stage { position: sticky; top: 0; }
+.ab--intro, .ab--stand { background: var(--night); }
+.ab--history, .ab--pastor { background: #fbfaff; color: var(--ink); }
+.ab--history .kicker, .ab--pastor .kicker { color: var(--indigo); }
+.ab--faq { background: var(--night); }
+
+/* intro: the photo starts full screen, then settles into the Figma layout with the copy beside it */
+.ab-intro__main, .ab-intro__small { position: absolute; object-fit: cover; will-change: transform; }
+.ab-intro__main { left: var(--gutter); top: calc(50% - 22svh + 30px); width: min(36vw, 500px); height: 44svh; border-radius: 20px; }
+.ab-intro__small { left: calc(var(--gutter) + min(26vw, 370px)); top: calc(50% + 4svh + 30px); width: min(18vw, 250px); height: 22svh; border: 8px solid var(--night); border-radius: 20px; }
+.ab-intro__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11, 7, 24, 0.4), rgba(11, 7, 24, 0) 40%, rgba(11, 7, 24, 0.6)); pointer-events: none; }
+.ab-intro__open { position: absolute; left: var(--gutter); right: var(--gutter); bottom: clamp(48px, 10vh, 110px); margin: 0; text-shadow: 0 2px 40px rgba(0, 0, 0, 0.35); pointer-events: none; }
+.ab-intro__copy { position: absolute; right: max(var(--gutter), 120px); top: 50%; width: min(560px, 44vw); transform: translateY(-50%); }
+.ab-intro__copy .lede { max-width: 46ch; font-size: 18px; }
+
+/* who we stand for: the mission, then each line in turn */
+.stand-im__head { position: absolute; left: var(--gutter); right: var(--gutter); top: 50%; max-width: 1000px; transform: translateY(-50%); }
+.stand-im__list { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; }
+.stand-im__list li { position: absolute; left: var(--gutter); right: var(--gutter); top: 50%; max-width: 900px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.4); opacity: 0; transform: translateY(-50%); }
+.stand-im__num { display: block; margin-bottom: 12px; color: var(--gold); font-family: var(--font); font-weight: 500; font-size: 14px; letter-spacing: 0.12em; }
+.stand-im__list h3 { text-wrap: balance; margin: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(48px, 8vw, 128px); line-height: 0.95; letter-spacing: -0.04em; }
+.stand-im__list p { max-width: 36ch; margin: 20px 0 0; color: #b8b8b8; font-size: clamp(18px, 1.8vw, 24px); line-height: 1.45; }
+
+/* history: a sideways walk along the years */
+.history-im__head { position: absolute; left: var(--gutter); top: clamp(112px, 16vh, 150px); }
+.history-im__rail { position: absolute; left: 0; right: 0; top: calc(50% + 20px); height: 2px; background: rgba(38, 8, 154, 0.12); }
+.history-im__rail span { display: block; width: 100%; height: 100%; transform-origin: 0 50%; transform: scaleX(var(--line, 0)); background: var(--indigo); }
+.history-im { position: absolute; left: 0; top: calc(50% - 200px); display: flex; gap: 40px; margin: 0; padding: 0 0 0 var(--gutter); list-style: none; will-change: transform; }
+.history-im li { --on: 0; flex: none; display: flex; flex-direction: column; gap: 12px; width: clamp(260px, 26vw, 360px); opacity: calc(0.35 + 0.65 * var(--on)); transform: translateY(calc((1 - var(--on)) * 16px)); }
+.history-im__photo { display: grid; place-items: center; height: 200px; padding: 16px; border: 1px dashed #8a8a8a; border-radius: 16px; background: #ececeb; color: #646464; font-size: 14px; text-align: center; }
+.history-im__year { position: relative; display: flex; align-items: center; gap: 12px; margin: 10px 0 0; color: var(--indigo); font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.02em; }
+.history-im__year::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--indigo); box-shadow: 0 0 0 calc(var(--on) * 6px) rgba(38, 8, 154, 0.15); }
+.history-im h3 { margin: 0; font-family: var(--font); font-weight: 600; font-size: 18px; }
+.history-im li > p:last-child { margin: 0; color: var(--ink-2); font-size: 15px; }
+
+/* pastor: the portrait comes forward */
+.pastor-im { position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); align-items: center; gap: clamp(32px, 5vw, 80px); max-width: 1320px; margin: 0 auto; padding: 120px max(var(--gutter), 120px) 60px var(--gutter); }
+.pastor-im__frame { height: min(620px, calc(100svh - 200px)); overflow: hidden; border-radius: 24px; }
+.pastor-im__frame img { width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+.pastor-im__role { margin: 20px 0 0; font-size: 19px; line-height: 1.5; }
+.pastor-im__bio { max-width: 56ch; margin: 14px 0 0; color: var(--ink-2); line-height: 1.55; }
+.pastor-im__quote { margin: 26px 0 0; padding-left: 20px; border-left: 3px solid #c7973f; font-family: var(--font-display); font-weight: 600; font-size: clamp(20px, 2vw, 26px); line-height: 1.3; letter-spacing: -0.01em; }
+
+/* faq */
+.ab-faq { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); max-width: 1320px; margin: 0 auto; padding: 120px max(var(--gutter), 120px) 96px var(--gutter); }
+.ab-faq__cta { margin-top: 28px; }
+
+@media (max-width: 1023px) {
+  .ab-intro__copy { right: var(--gutter); }
+  .pastor-im { padding-right: var(--gutter); }
+  .ab-faq { grid-template-columns: minmax(0, 1fr); padding-right: var(--gutter); }
+}
+@media (max-width: 720px) {
+  .moving .ab--intro { height: 200vh; }
+  .moving .ab--stand { height: 280vh; }
+  .moving .ab--history { height: 280vh; }
+  /* intro on phones: photo on top, copy below */
+  .ab-intro__main { left: var(--gutter); top: 96px; width: calc(100% - 2 * var(--gutter)); height: 34svh; }
+  .ab-intro__small { left: auto; right: calc(var(--gutter) + 8px); top: calc(96px + 34svh - 70px); width: 34vw; height: 15svh; border-width: 6px; }
+  .ab-intro__copy { left: var(--gutter); right: var(--gutter); top: auto; bottom: 36px; width: auto; transform: none; }
+  .ab-intro__copy .lede { font-size: 15px; }
+  .stand-im__list h3 { font-size: clamp(40px, 12vw, 56px); }
+  .history-im { top: calc(50% - 170px); gap: 20px; }
+  .history-im li { width: 74vw; }
+  .history-im__photo { height: 160px; }
+  .moving .ab--pastor { height: auto; }
+  .moving .ab--pastor > .stage { position: relative; height: auto; overflow: visible; }
+  .pastor-im { position: relative; inset: auto; grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 96px var(--gutter) 64px; }
+  .pastor-im__frame { height: auto; aspect-ratio: 4 / 5; }
+  .ab-faq { padding: 80px var(--gutter) 64px; }
+}
+
+/* still mode */
+html:not(.moving) .ab > .stage { height: auto; overflow: visible; }
+html:not(.moving) .ab--intro .stage { display: grid; gap: 24px; padding: 112px var(--gutter) 64px; }
+html:not(.moving) .ab-intro__main, html:not(.moving) .ab-intro__small, html:not(.moving) .ab-intro__copy, html:not(.moving) .stand-im__head, html:not(.moving) .stand-im__list, html:not(.moving) .stand-im__list li, html:not(.moving) .history-im__head, html:not(.moving) .history-im, html:not(.moving) .pastor-im { position: relative; inset: auto; left: auto; right: auto; top: auto; bottom: auto; width: auto; height: auto; transform: none; opacity: 1; }
+html:not(.moving) .ab-intro__main { height: 50svh; }
+html:not(.moving) .ab-intro__small, html:not(.moving) .ab-intro__open, html:not(.moving) .ab-intro__shade, html:not(.moving) .history-im__rail { display: none; }
+html:not(.moving) .ab--stand .stage { display: grid; gap: 48px; padding: 96px var(--gutter); }
+html:not(.moving) .stand-im__list { display: grid; gap: 40px; }
+html:not(.moving) .ab--history .stage { padding: 96px var(--gutter); }
+html:not(.moving) .history-im { flex-wrap: wrap; margin-top: 32px; padding: 0; }
+html:not(.moving) .history-im li { --on: 1; }

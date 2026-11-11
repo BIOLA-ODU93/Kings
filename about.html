@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>About King's Court</title>
+  <meta name="description" content="RCCG King's Court Dublin: our story, what we stand for, and our pastor." />
+  <link rel="stylesheet" href="https://use.typekit.net/lxg6pfa.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="immersive.css" />
+  <link rel="stylesheet" href="about.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="about-im">
+  <a class="skip" href="#story">Skip to the start</a>
+
+  <header class="nav" aria-label="Site">
+    <div class="nav__pill">
+      <a class="brand" href="./" aria-label="King's Court Dublin, home">
+        <span class="brand__mark"><img src="assets/logo-sprite.png" alt="" /></span>
+        <span class="brand__text"><span class="brand__name">King’s Court</span><span class="brand__city">Dublin</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="about.html" aria-current="page">About</a>
+        <a href="./#order">Services</a>
+        <a href="./#times">Events</a>
+        <a href="./#word">Sermons</a>
+        <a href="./#offering">Give</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="nav__live" href="https://www.youtube.com/@kingscourtparish/live" target="_blank" rel="noopener"><span class="nav__dot" aria-hidden="true"></span>Watch live</a>
+        <a class="pillbtn" href="./#visit">Plan your visit</a>
+      </div>
+      <button class="nav__menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu" data-menu-open><span class="nav__menu-label">Menu</span><span class="nav__menu-icon" data-icon="list" data-size="20"></span></button>
+    </div>
+  </header>
+  <div class="menu" id="menu" hidden>
+    <button class="menu__close" type="button" aria-label="Close menu" data-menu-close>Close</button>
+    <nav aria-label="Main">
+      <ol class="menu__list">
+        <li><a href="./">Home</a></li>
+        <li><a href="about.html" aria-current="page">About us</a></li>
+        <li><a href="./#order">Order of service</a></li>
+        <li><a href="./#word">Sermons</a></li>
+        <li><a href="./#prayer">Prayer request</a></li>
+        <li><a href="./#offering">Give</a></li>
+        <li><a href="./#visit">Plan your visit</a></li>
+      </ol>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
+
+  <main>
+    <!-- Intro (Figma 1600:515): the photo opens full screen, then settles into its frame -->
+    <section class="ab ab--intro" id="story" data-tone="dark" aria-labelledby="about-title">
+      <div class="stage">
+        <img class="ab-intro__main" src="assets/about/intro-main.jpg" alt="A singer leading worship at King’s Court" data-intro-main />
+        <img class="ab-intro__small" src="assets/about/intro-small.jpg" alt="A guitarist playing during the service" data-intro-small />
+        <div class="ab-intro__shade" aria-hidden="true" data-intro-shade></div>
+        <p class="ab-intro__open display" aria-hidden="true" data-intro-open>This is King’s Court.</p>
+        <div class="ab-intro__copy" data-intro-copy>
+          <p class="kicker">About us</p>
+          <h1 class="display display--m" id="about-title">More than a church. A family.</h1>
+          <p class="lede">For [two decades], God has used King’s Court to transform lives, strengthen faith and nurture lasting relationships rooted in love and purpose. Our story is one of people growing together, from children who found their calling in music and service to families who discovered community.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who we stand for (Figma 1600:525): the mission, then each line takes the room in turn -->
+    <section class="ab ab--stand" id="stand" data-tone="dark" aria-labelledby="stand-title">
+      <div class="stage">
+        <div class="stand-im__head" data-stand-head>
+          <p class="kicker">Who we stand for</p>
+          <h2 class="display display--m" id="stand-title">To make heaven, and to take as many people with us as we can.</h2>
+        </div>
+        <ol class="stand-im__list" data-stand-list>
+          <li><span class="stand-im__num">01</span><h3>Make heaven</h3><p>Holiness is our lifestyle, and grace is how we get there.</p></li>
+          <li><span class="stand-im__num">02</span><h3>Bring people with us</h3><p>Nobody walks in alone. Every visitor is welcomed like family.</p></li>
+          <li><span class="stand-im__num">03</span><h3>A member in every family</h3><p>Part of RCCG’s global mission to every family of all nations.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- History (Figma 1601:516): walk the timeline sideways -->
+    <section class="ab ab--history" id="history" data-tone="light" aria-labelledby="history-title">
+      <div class="stage">
+        <div class="history-im__head">
+          <p class="kicker">Our history</p>
+          <h2 class="display display--m" id="history-title">Where it all began</h2>
+        </div>
+        <div class="history-im__rail" aria-hidden="true"><span data-history-line></span></div>
+        <ol class="history-im" data-history>
+          <li><div class="history-im__photo">[Photo from the church archive]</div><p class="history-im__year">[2004]</p><h3>A first prayer meeting</h3><p>[Eight people in a living room in Dublin 15.]</p></li>
+          <li><div class="history-im__photo">[Photo from the church archive]</div><p class="history-im__year">[2006]</p><h3>King’s Court is planted</h3><p>[First Sunday service in a rented hall.]</p></li>
+          <li><div class="history-im__photo">[Photo from the church archive]</div><p class="history-im__year">[2014]</p><h3>A home of our own</h3><p>[Moved into our current building.]</p></li>
+          <li><div class="history-im__photo">[Photo from the church archive]</div><p class="history-im__year">[2026]</p><h3>Still growing</h3><p>[Four weekly gatherings and a family from 20+ nations.]</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Pastor (Figma 1601:554): the portrait comes forward as you reach it -->
+    <section class="ab ab--pastor" id="pastor" data-tone="light" aria-labelledby="pastor-title">
+      <div class="stage">
+        <div class="pastor-im">
+          <div class="pastor-im__frame"><img src="assets/about/pastor.jpg" alt="Pastor Segun Gbadebo" data-pastor-img /></div>
+          <div class="pastor-im__copy" data-pastor-copy>
+            <p class="kicker">Our pastor</p>
+            <h2 class="display display--m" id="pastor-title">Pastor Segun Gbadebo</h2>
+            <p class="pastor-im__role">Pastor in charge of RCCG King’s Court Dublin and Provincial Pastor of RCCG Province 2, Ireland.</p>
+            <p class="pastor-im__bio">[Two or three sentences in his own voice: how he came to faith, what he loves about Dublin, and what a first-time visitor should know about him. Plus his wife, if the church wants to present the pastorate as a couple.]</p>
+            <blockquote class="pastor-im__quote">“[A short welcome from the pastor, one line people remember.]”</blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ + footer -->
+    <section class="ab ab--faq" data-tone="dark" aria-labelledby="faq-title">
+      <div class="ab-faq">
+        <div>
+          <p class="kicker">FAQ</p>
+          <h2 class="display display--m" id="faq-title">Everything you need to know</h2>
+          <a class="btn btn--light ab-faq__cta" href="./#visit">Plan your visit</a>
+        </div>
+        <div class="faq" data-faq></div>
+      </div>
+      <footer class="foot">
+        <p>© 2026 RCCG King’s Court Dublin. Part of the Redeemed Christian Church of God. Registered charity CHY [00000].</p>
+        <p><a href="./">Home</a> · <a href="https://www.youtube.com/@kingscourtparish" target="_blank" rel="noopener">YouTube</a> · <span>[hello@kingscourtdublin.ie]</span></p>
+      </footer>
+    </section>
+  </main>
+
+  <script type="module" src="about.js"></script>
+</body>
+</html>
