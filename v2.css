@@ -1373,14 +1373,53 @@
 
 /* ---------- About page (Figma "About Us/ V1" 1:394, with Who we stand for moved first) ---------- */
 .aboutpage .s2 { padding-block: 0; }
-/* who we stand for: the first thing you see, fading in word by word */
-.av1-stand { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px; min-height: 86vh; min-height: 86svh; padding-top: 140px !important; padding-bottom: 80px !important; text-align: center; }
-.v2 .av1-stand__text { max-width: 22ch; margin: 0; font-family: var(--font-head); font-weight: 700; font-size: clamp(30px, 4.4vw, 60px); line-height: 1.08; letter-spacing: -0.02em; text-transform: uppercase; text-wrap: balance; color: var(--text-1); }
-.av1-stand__text .w { color: #b9b6c2; transition: color 900ms ease; }
-.av1-stand__text .w.is-on { color: var(--text-1); }
-.av1-stand__text .w.is-key.is-on { color: var(--accent); }
-.av1-stand .tag2 { align-self: center; }
-.av1-stand__note { margin: 0; color: var(--text-mut); font-size: 13px; }
+/* who we stand for: the vision as one pinned scene. The mission fades in word by word, lifts to the top,
+   each line takes the room in turn, then all three settle into one row. */
+.vision { position: relative; background: #0b0718; color: var(--white); }
+.vmove .vision { height: 440vh; }
+.vision__stage { position: relative; height: 100vh; height: 100svh; overflow: hidden; }
+.vmove .vision__stage { position: sticky; top: 0; }
+.vision__stage::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 55% at 50% 45%, rgba(38, 8, 154, 0.35), rgba(11, 7, 24, 0) 70%); }
+.vision__head { position: absolute; left: 50%; top: 50%; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 24px; width: min(1100px, calc(100% - 2 * var(--gutter))); text-align: center; transform: translate(-50%, -50%); transform-origin: 50% 0; }
+.vmove .vision__head { transform: translate(-50%, -50%); }
+.vision__head .tag2 { align-self: center; }
+.v2 .vision__mission { max-width: 22ch; margin: 0; font-family: var(--font-head); font-weight: 700; font-size: clamp(30px, 4.6vw, 64px); line-height: 1.06; letter-spacing: -0.02em; text-transform: uppercase; text-wrap: balance; color: var(--white); }
+.vision__mission .w { color: rgba(255, 255, 255, 0.18); transition: color 900ms ease; }
+.vision__mission .w.is-on { color: var(--white); }
+.vision__mission .w.is-key.is-on { color: #c9b8ff; }
+.vision__note { margin: 0; color: rgba(255, 255, 255, 0.5); font-size: 13px; }
+.vision__lines, .vision__sum { margin: 0; padding: 0; list-style: none; }
+.vision__lines li { position: absolute; left: 50%; top: 54%; width: min(980px, calc(100% - 2 * var(--gutter))); opacity: 0; transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
+.vision__num { display: block; margin-bottom: 14px; color: #d4b25c; font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: 0.16em; }
+.v2 .vision__lines h2 { margin: 0; font-family: var(--font-head); font-weight: 700; font-size: clamp(48px, 8.4vw, 132px); line-height: 0.94; letter-spacing: -0.04em; text-wrap: balance; color: var(--white); }
+.vision__lines em { font-style: normal; color: #c9b8ff; }
+.vision__lines p { max-width: 34ch; margin: 22px auto 0; color: #b8b8b8; font-size: clamp(18px, 1.8vw, 24px); line-height: 1.45; }
+.vision__sum { position: absolute; left: 50%; bottom: clamp(56px, 12vh, 120px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; width: min(1320px, calc(100% - 2 * var(--gutter))); opacity: 0; transform: translateX(-50%); pointer-events: none; }
+.vision__sum li { display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.5); }
+.vision__sum .vision__num { margin-bottom: 4px; font-size: 12px; }
+.vision__sum b { font-family: var(--font-head); font-weight: 600; font-size: 24px; line-height: 30px; letter-spacing: -0.01em; }
+.vision__sum span:last-child { color: #b8b8b8; font-size: 16px; line-height: 24px; }
+.vision__meter { position: absolute; left: 50%; bottom: 36px; display: flex; align-items: center; gap: 14px; opacity: 0; transform: translateX(-50%); }
+.vision__bar { position: relative; width: 140px; height: 2px; overflow: hidden; border-radius: 2px; background: rgba(255, 255, 255, 0.18); }
+.vision__bar span { position: absolute; inset: 0; transform-origin: 0 50%; transform: scaleX(var(--v, 0)); background: #d4b25c; }
+.vision__meter b { white-space: nowrap; font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.7); font-variant-numeric: tabular-nums; }
+.vision__cue { position: absolute; left: 50%; bottom: 32px; color: rgba(255, 255, 255, 0.55); font-family: var(--font-display); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; transform: translateX(-50%); }
+/* still: reduced motion or no JS */
+html:not(.vmove) .vision__stage { height: auto; padding: 160px var(--gutter) 96px; }
+html:not(.vmove) .vision__head { position: relative; left: auto; top: auto; margin: 0 auto 64px; transform: none; }
+html:not(.vmove) .vision__lines, html:not(.vmove) .vision__meter, html:not(.vmove) .vision__cue { display: none; }
+html:not(.vmove) .vision__sum { position: relative; left: auto; bottom: auto; margin: 0 auto; opacity: 1; transform: none; }
+@media (max-width: 720px) {
+  .vmove .vision { height: 400vh; }
+  .v2 .vision__mission { font-size: clamp(26px, 8vw, 34px); }
+  .v2 .vision__lines h2 { font-size: clamp(42px, 13vw, 60px); }
+  .vision__lines li { top: 52%; }
+  .vision__sum { grid-template-columns: minmax(0, 1fr); gap: 16px; bottom: 72px; }
+  .vision__sum li { padding-top: 12px; gap: 4px; }
+  .vision__sum b { font-size: 19px; line-height: 24px; }
+  .vision__sum span:last-child { font-size: 14px; line-height: 20px; }
+  html:not(.vmove) .vision__stage { padding: 120px var(--gutter) 64px; }
+}
 .av1-fade { opacity: 0; transform: translateY(10px); animation: av1-in 900ms cubic-bezier(0.23, 1, 0.32, 1) forwards; animation-delay: calc(var(--d, 0) * 140ms + 100ms); }
 @keyframes av1-in { to { opacity: 1; transform: none; } }
 /* the rest builds as you reach it */
@@ -1448,8 +1487,6 @@
   .av1-pastor__side { flex-basis: auto; width: min(427px, 100%); align-self: center; }
 }
 @media (max-width: 720px) {
-  .av1-stand { min-height: 78svh; padding-top: 120px !important; padding-bottom: 48px !important; gap: 20px; }
-  .v2 .av1-stand__text { font-size: clamp(26px, 8vw, 34px); }
   .av1-intro, .av1-pastor { padding-top: 56px !important; padding-bottom: 56px !important; }
   .av1-frame { padding: 10px; border-radius: 16px; }
   .av1-frame--s { padding: 6px; }
@@ -1467,5 +1504,5 @@
 @media (prefers-reduced-motion: reduce) {
   .av1-fade { animation: none; opacity: 1; transform: none; }
   .js [data-reveal] { opacity: 1; transform: none; transition: none; }
-  .av1-stand__text .w { transition: none; }
+  .vision__mission .w { transition: none; }
 }

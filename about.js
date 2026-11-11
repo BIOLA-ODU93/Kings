@@ -76,3 +76,55 @@ moreBtn?.addEventListener('click', () => {
   moreBtn.setAttribute('aria-expanded', String(open));
   moreBtn.textContent = open ? 'Read less' : 'Read more';
 });
+
+// ---------------------------------------------------------------- the vision: one pinned scene
+// 0–.12 the mission · .12–.22 it lifts to the top · .24–.78 each line takes the room · .8–.9 all three settle into a row
+const vision = $('#vision');
+if (vision && !reduce) {
+  document.documentElement.classList.add('vmove');
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const smooth = (a, b, v) => { const t = clamp((v - a) / (b - a)); return t * t * (3 - 2 * t); };
+  const head = $('[data-vhead]'), lines = $$('[data-vlines] li'), sum = $('[data-vsum]');
+  const meter = $('[data-vmeter]'), bar = $('[data-vbar]'), count = $('[data-vcount]'), cue = $('[data-vcue]');
+  const narrow = matchMedia('(max-width: 720px)');
+  const centres = [0.34, 0.5, 0.66];
+  let queued = false;
+  const tick = () => {
+    queued = false;
+    const r = vision.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > innerHeight) return;
+    const p = clamp(-r.top / (r.height - innerHeight));
+    // the mission: centred → small, just under the nav → back down, larger, above the three pillars
+    const lift = smooth(0.12, 0.22, p), settle = smooth(0.8, 0.9, p);
+    const H = innerHeight, h = head.offsetHeight, n = narrow.matches;
+    const centreTop = H / 2 - h / 2;
+    const liftTop = n ? 96 : 104, liftScale = n ? 0.6 : 0.45;
+    const endTop = n ? 92 : H * 0.16, endScale = n ? 0.62 : 0.8;
+    const top = lift < 1 ? centreTop + (liftTop - centreTop) * lift : liftTop + (endTop - liftTop) * settle;
+    const scale = lift < 1 ? 1 + (liftScale - 1) * lift : liftScale + (endScale - liftScale) * settle;
+    head.style.transform = `translate(-50%, ${(top - H / 2).toFixed(1)}px) scale(${scale.toFixed(4)})`;
+    head.style.opacity = (1 - lift * 0.5 + settle * 0.5).toFixed(3);
+    let current = 0;
+    lines.forEach((li, i) => {
+      const c = centres[i];
+      const o = smooth(c - 0.1, c - 0.03, p) * (1 - smooth(c + 0.05, c + 0.1, p));
+      if (o > 0.5) current = i;
+      li.style.opacity = o.toFixed(3);
+      const dir = p < c ? 1 : -1;
+      li.style.transform = `translate(-50%, calc(-50% + ${((1 - o) * 46 * dir).toFixed(1)}px))`;
+    });
+    if (p > centres[2]) current = 2;
+    const s = smooth(0.8, 0.9, p);
+    sum.style.opacity = s.toFixed(3);
+    sum.style.transform = `translateX(-50%) translateY(${((1 - s) * 30).toFixed(1)}px)`;
+    const m = smooth(0.2, 0.26, p) * (1 - smooth(0.78, 0.82, p));
+    meter.style.opacity = m.toFixed(3);
+    bar.style.setProperty('--v', smooth(0.24, 0.76, p).toFixed(4));
+    count.textContent = `0${current + 1} / 03`;
+    cue.style.opacity = (1 - smooth(0.02, 0.08, p)).toFixed(3);
+  };
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(tick); } };
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', queue);
+  tick();
+}
