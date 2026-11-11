@@ -128,3 +128,28 @@ if (vision && !reduce) {
   addEventListener('resize', queue);
   tick();
 }
+
+// ---------------------------------------------------------------- pastor video: hover plays (silent), double-click / Watch opens it full size
+const pvid = $('[data-pvid]');
+if (pvid) {
+  const preview = $('.pvid__preview', pvid);
+  const player = $('[data-pvid-player]');
+  const full = $('.pvid-player__video', player);
+  const play = () => { if (reduce) return; preview.play().then(() => pvid.classList.add('is-playing')).catch(() => {}); };
+  const pause = () => { preview.pause(); pvid.classList.remove('is-playing'); };
+  pvid.addEventListener('mouseenter', play);
+  pvid.addEventListener('mouseleave', pause);
+  // touch: a tap toggles the silent preview; Watch opens the full video
+  pvid.addEventListener('click', (e) => { if (e.target.closest('[data-pvid-open]') || matchMedia('(hover: hover)').matches) return; if (preview.paused) play(); else pause(); });
+  const open = () => {
+    pause();
+    player.showModal();
+    full.currentTime = 0;
+    full.play().catch(() => {}); // started by a click, so sound is allowed
+  };
+  pvid.addEventListener('dblclick', open);
+  $('[data-pvid-open]', pvid).addEventListener('click', (e) => { e.stopPropagation(); open(); });
+  $('[data-pvid-close]', player).addEventListener('click', () => player.close());
+  player.addEventListener('click', (e) => { if (e.target === player) player.close(); });
+  player.addEventListener('close', () => { full.pause(); });
+}

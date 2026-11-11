@@ -1506,3 +1506,24 @@ html:not(.vmove) .vision__sum { position: relative; left: auto; bottom: auto; ma
   .js [data-reveal] { opacity: 1; transform: none; transition: none; }
   .vision__mission .w { transition: none; }
 }
+
+/* pastor video (replaces the side portrait): hover plays silently, double-click or Watch opens it full size */
+.pvid { position: relative; cursor: zoom-in; background: #111; }
+.pvid__preview { display: block; width: 100%; height: 530px; object-fit: cover; }
+.pvid__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55)); pointer-events: none; transition: opacity 300ms ease; }
+.pvid__watch { position: absolute; left: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px 0 12px; border: 0; border-radius: 100px; background: rgba(255, 255, 255, 0.94); color: var(--text-1); font-family: var(--font-display); font-weight: 600; font-size: 14px; cursor: pointer; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms ease; }
+.pvid__watch [data-icon] { display: inline-flex; color: var(--accent); }
+.pvid__watch:hover { background: var(--white); }
+.pvid__watch:active { transform: scale(0.96); }
+.pvid__len { color: var(--text-mut); font-weight: 500; font-variant-numeric: tabular-nums; }
+.pvid__hint { position: absolute; right: 16px; bottom: 26px; color: rgba(255, 255, 255, 0.85); font-family: var(--font-display); font-size: 12px; letter-spacing: 0.04em; opacity: 0; transform: translateY(4px); transition: opacity 250ms ease, transform 250ms ease; pointer-events: none; }
+.pvid.is-playing .pvid__hint { opacity: 1; transform: none; }
+@media (hover: none) { .pvid__hint { display: none; } }
+.pvid-player { width: 100vw; max-width: none; height: 100vh; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; }
+.pvid-player::backdrop { background: rgba(5, 3, 14, 0.92); }
+.pvid-player[open] { display: grid; place-items: center; animation: pvid-in 320ms cubic-bezier(0.23, 1, 0.32, 1); }
+@keyframes pvid-in { from { opacity: 0; transform: scale(0.96); } }
+.pvid-player__video { max-width: calc(100vw - 32px); max-height: calc(100dvh - 120px); aspect-ratio: 9 / 16; border-radius: 16px; background: #000; }
+.pvid-player__close { position: fixed; top: calc(16px + env(safe-area-inset-top, 0px)); right: 16px; display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 50%; background: rgba(0, 0, 0, 0.35); color: var(--white); cursor: pointer; }
+@media (max-width: 720px) { .pvid__preview { height: 420px; } }
+@media (prefers-reduced-motion: reduce) { .pvid-player[open] { animation: none; } }

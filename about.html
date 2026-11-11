@@ -137,7 +137,13 @@
           </div>
           <button class="btn2 btn2--m btn2--ink" type="button" aria-expanded="false" aria-controls="pastor-more" data-pastor-more>Read more</button>
         </div>
-        <div class="av1-pastor__side" data-reveal style="--d: 2"><img src="assets/about/pastor-2.jpg" alt="Pastor Segun Gbadebo standing" /></div>
+        <!-- the side portrait is a video: hover to play it silently, double-click (or press Watch) to watch it full size with sound -->
+        <div class="av1-pastor__side pvid" data-reveal style="--d: 2" data-pvid>
+          <video class="pvid__preview" src="assets/about/psg-preview.mp4" poster="assets/about/psg-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+          <span class="pvid__shade" aria-hidden="true"></span>
+          <button class="pvid__watch" type="button" data-pvid-open aria-label="Watch the video of Pastor Segun Gbadebo, 3 minutes"><span data-icon="play-fill" data-size="16"></span><span>Watch</span><span class="pvid__len">3:00</span></button>
+          <span class="pvid__hint" aria-hidden="true">Double-click to watch</span>
+        </div>
       </div>
     </section>
 
@@ -210,6 +216,11 @@
       </div>
     </div>
   </footer>
+
+  <dialog class="pvid-player" data-pvid-player aria-label="Pastor Segun Gbadebo, video">
+    <button class="pvid-player__close" type="button" data-pvid-close aria-label="Close video"><span data-icon="x" data-size="22"></span></button>
+    <video class="pvid-player__video" src="assets/about/psg-full.mp4" poster="assets/about/psg-poster.jpg" controls playsinline preload="none"></video>
+  </dialog>
 
   <script type="module" src="about.js"></script>
 </body>
